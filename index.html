@@ -6,10 +6,10 @@
 <title>Sigazette</title>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QRGD2EPR7Y"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
+  window.dataLayer=window.dataLayer||[];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-QRGD2EPR7Y');
+  gtag('js',new Date());
+  gtag('config','G-QRGD2EPR7Y');
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
@@ -18,18 +18,11 @@
   --serif:'Playfair Display',Georgia,serif;
   --sans:'Source Sans 3',sans-serif;
   --tnr:'Times New Roman',Times,serif;
-  --ink:#111;
-  --muted:#666;
-  --border:#e0ddd8;
-  --bg:#f9f8f5;
-  --white:#fff;
-  --accent:#1a3c2e;
-  --accent-light:#eaf2ed;
-  --red:#c0392b;
+  --ink:#111;--muted:#666;--border:#e0ddd8;--bg:#f9f8f5;--white:#fff;
+  --accent:#1a3c2e;--accent-light:#eaf2ed;--red:#c0392b;
 }
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);min-height:100vh;}
-a{color:inherit;text-decoration:none;}
-button{cursor:pointer;font-family:var(--sans);}
+a{color:inherit;text-decoration:none;}button{cursor:pointer;font-family:var(--sans);}
 input,textarea,select{font-family:var(--sans);}
 nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;}
 .nav-top{max-width:1160px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
@@ -50,8 +43,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);position:stick
 .ad-leaderboard .ad-box{height:80px;}
 .ad-box-inner{font-size:11px;color:#bbb;}
 .page{max-width:1160px;margin:0 auto;padding:2rem 1.5rem;display:grid;grid-template-columns:1fr 260px;gap:3rem;align-items:start;}
-main{min-width:0;}
-aside{position:sticky;top:72px;}
+main{min-width:0;}aside{position:sticky;top:72px;}
 .section-label{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border-bottom:2px solid var(--accent);display:inline-block;padding-bottom:3px;margin-bottom:1.5rem;}
 .featured-grid{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:3rem;}
 .feat-hero{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
@@ -102,9 +94,9 @@ aside{position:sticky;top:72px;}
 .comments-section{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);}
 .comment{display:flex;gap:.85rem;margin-bottom:1.25rem;}
 .avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--white);text-transform:uppercase;}
-.comment-body .c-name{font-size:13px;font-weight:500;margin-bottom:.2rem;}
-.comment-body .c-date{font-size:11px;color:var(--muted);margin-left:.5rem;}
-.comment-body .c-text{font-size:14px;color:var(--muted);line-height:1.65;}
+.c-name{font-size:13px;font-weight:500;margin-bottom:.2rem;}
+.c-date{font-size:11px;color:var(--muted);margin-left:.5rem;}
+.c-text{font-size:14px;color:var(--muted);line-height:1.65;}
 .comment-form{margin-top:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.25rem;}
 .comment-form h4{font-family:var(--serif);font-size:1rem;font-weight:700;margin-bottom:1rem;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:.65rem;}
@@ -113,7 +105,7 @@ aside{position:sticky;top:72px;}
 textarea.inp{height:85px;resize:vertical;margin-bottom:.65rem;}
 .btn-primary{background:var(--accent);color:var(--white);border:none;border-radius:6px;padding:9px 20px;font-size:13px;font-weight:500;transition:background .15s;}
 .btn-primary:hover{background:#0f2a1e;}
-.btn-danger{background:var(--red);color:var(--white);border:none;border-radius:6px;padding:6px 14px;font-size:12px;font-weight:500;transition:background .15s;}
+.btn-danger{background:var(--red);color:var(--white);border:none;border-radius:6px;padding:6px 14px;font-size:12px;font-weight:500;}
 .btn-danger:hover{background:#a93226;}
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;align-items:center;justify-content:center;}
 .modal-overlay.open{display:flex;}
@@ -170,9 +162,9 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
 .footer-logo span{color:var(--accent);}
 .footer-links{display:flex;gap:1.5rem;justify-content:center;list-style:none;margin:.75rem 0;}
 .footer-links a{font-size:12px;color:var(--muted);}
-.footer-links a:hover{color:var(--accent);}
 .footer-copy{font-size:12px;color:var(--muted);}
 .hidden{display:none!important;}
+.loading{text-align:center;padding:2rem;color:var(--muted);font-size:14px;}
 </style>
 </head>
 <body>
@@ -214,7 +206,7 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
     <main>
       <div id="featured-section"></div>
       <div class="section-label">Recent</div>
-      <div class="post-list" id="post-list"></div>
+      <div class="post-list" id="post-list"><div class="loading">Loading articles...</div></div>
       <div id="home-empty" class="empty-state hidden">
         <div style="font-size:2.5rem;">📰</div>
         <p>No articles yet. Log in as admin to publish your first piece.</p>
@@ -320,31 +312,63 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
   <p class="footer-copy">© 2026 Sigazette. All rights reserved.</p>
 </footer>
 
-<script>
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getFirestore, collection, addDoc, getDocs, getDoc, doc, deleteDoc, updateDoc, query, orderBy, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAaVwL4Jn6YQ66qbMZqIEIgbSWNyOze2P0",
+  authDomain: "sigazette.firebaseapp.com",
+  projectId: "sigazette",
+  storageBucket: "sigazette.firebasestorage.app",
+  messagingSenderId: "271477408489",
+  appId: "1:271477408489:web:474ebd617698b5ba432678"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 const ADMIN_EMAIL='admin@sigazette.com';
 const ADMIN_PW='sigazette2026';
-let articles=[],comments={},isAdmin=false,editingId=null,currentArticleId=null,imgMode='upload',inlinePhotos=[];
+let articles=[], isAdmin=false, editingId=null, currentArticleId=null, imgMode='upload', inlinePhotos=[];
+
 const AVATARS=['#5a87a0','#8a6fa5','#1a3c2e','#c0392b','#d4813a','#3a6e9e'];
 function colorFor(n){let h=0;for(let c of n)h=c.charCodeAt(0)+((h<<5)-h);return AVATARS[Math.abs(h)%AVATARS.length];}
 function initials(n){return n.trim().split(' ').map(w=>w[0]||'').join('').toUpperCase().slice(0,2)||'?';}
-function fmtDate(iso){return new Date(iso).toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});}
+function fmtDate(ts){if(!ts)return '';const d=ts.toDate?ts.toDate():new Date(ts);return d.toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});}
 function uid(){return 'p'+Date.now()+Math.random().toString(36).slice(2,5);}
-function save(){localStorage.setItem('sg_articles',JSON.stringify(articles));localStorage.setItem('sg_comments',JSON.stringify(comments));}
-function load(){try{articles=JSON.parse(localStorage.getItem('sg_articles')||'[]');}catch(e){articles=[];}try{comments=JSON.parse(localStorage.getItem('sg_comments')||'{}');}catch(e){comments={};}}
+
+// ── VIEWS ──
 function showOnly(id){['home-view','article-view','admin-panel','search-view'].forEach(v=>document.getElementById(v).style.display='none');document.getElementById(id).style.display='block';}
-function showHome(){showOnly('home-view');currentArticleId=null;renderHome();document.getElementById('search-input').value='';}
-function showArticle(id){currentArticleId=id;showOnly('article-view');renderArticle(id);window.scrollTo(0,0);}
+window.showHome=function(){showOnly('home-view');currentArticleId=null;document.getElementById('search-input').value='';};
+window.showArticle=function(id){currentArticleId=id;showOnly('article-view');renderArticle(id);window.scrollTo(0,0);};
 function showAdmin(){showOnly('admin-panel');renderAdminList();}
-function showSearch(q){
+window.showSearch=function(q){
   showOnly('search-view');
   const r=articles.filter(a=>a.title.toLowerCase().includes(q.toLowerCase())||a.body.toLowerCase().includes(q.toLowerCase())||(a.tag||'').toLowerCase().includes(q.toLowerCase()));
-  document.getElementById('search-heading').textContent=r.length?`${r.length} result${r.length!==1?'s':''} for "${q}"`: `No results for "${q}"`;
+  document.getElementById('search-heading').textContent=r.length?`${r.length} result${r.length!==1?'s':''} for "${q}"`:` No results for "${q}"`;
   document.getElementById('search-results').innerHTML=r.length?r.map(a=>postCardHTML(a)).join(''):'<p style="color:var(--muted);font-size:14px;">Try a different search term.</p>';
-}
+};
 let searchTimer;
-function handleSearch(v){clearTimeout(searchTimer);if(!v.trim())return;searchTimer=setTimeout(()=>doSearch(),350);}
-function doSearch(){const q=document.getElementById('search-input').value.trim();if(q)showSearch(q);}
-function renderHome(){const s=[...articles].sort((a,b)=>new Date(b.date)-new Date(a.date));renderFeatured(s);renderPostList(s.slice(2));renderSidebar(s);document.getElementById('home-empty').classList.toggle('hidden',articles.length>0);}
+window.handleSearch=function(v){clearTimeout(searchTimer);if(!v.trim())return;searchTimer=setTimeout(()=>doSearch(),350);};
+window.doSearch=function(){const q=document.getElementById('search-input').value.trim();if(q)window.showSearch(q);};
+
+// ── FIRESTORE LIVE LISTENER ──
+const q=query(collection(db,'articles'),orderBy('date','desc'));
+onSnapshot(q,snap=>{
+  articles=snap.docs.map(d=>({id:d.id,...d.data()}));
+  renderHome();
+});
+
+function renderHome(){
+  renderFeatured(articles);
+  renderPostList(articles.slice(2));
+  renderSidebar(articles);
+  document.getElementById('home-empty').classList.toggle('hidden',articles.length>0);
+  if(articles.length) document.getElementById('post-list').querySelector('.loading')?.remove();
+}
+
 function thumbHTML(a){
   if(a.img)return `<div class="post-thumb"><img src="${a.img}" alt="" onerror="this.style.display='none'"/></div>`;
   return `<div class="post-thumb"><span class="post-thumb-icon">📰</span></div>`;
@@ -356,9 +380,7 @@ function postCardHTML(a){
       <h3>${a.title}</h3>
       <p>${a.excerpt||a.body.slice(0,120).replace(/\n/g,' ')}${a.body.length>120?'…':''}</p>
       <div class="post-meta"><span>${a.author}</span><span>·</span><span>${fmtDate(a.date)}</span></div>
-    </div>
-    ${thumbHTML(a)}
-  </div>`;
+    </div>${thumbHTML(a)}</div>`;
 }
 function renderFeatured(sorted){
   const el=document.getElementById('featured-section');
@@ -368,16 +390,18 @@ function renderFeatured(sorted){
   const smalls=rest.slice(0,2).map(a=>`<div class="feat-small" onclick="showArticle('${a.id}')" style="cursor:pointer;"><div class="feat-tag">${a.tag||''}</div><h3>${a.title}</h3><p>${a.excerpt||a.body.slice(0,90).replace(/\n/g,' ')}…</p></div>`).join('');
   el.innerHTML=`<div class="section-label">Featured</div><div class="featured-grid"><div class="feat-hero" onclick="showArticle('${hero.id}')" style="cursor:pointer;"><div class="feat-hero-img">${imgHTML}</div><div class="feat-hero-body"><div class="feat-tag">${hero.tag||''}</div><h2>${hero.title}</h2><p>${hero.excerpt||hero.body.slice(0,160).replace(/\n/g,' ')}${hero.body.length>160?'…':''}</p><div class="post-meta"><span>${hero.author}</span><span>·</span><span>${fmtDate(hero.date)}</span></div></div></div>${smalls?`<div class="feat-smalls">${smalls}</div>`:''}</div>`;
 }
-function renderPostList(posts){document.getElementById('post-list').innerHTML=posts.length?posts.map(postCardHTML).join(''):'';}
+function renderPostList(posts){document.getElementById('post-list').innerHTML=posts.length?posts.map(postCardHTML).join(''):'<div class="loading" style="display:none;"></div>';}
 function renderSidebar(sorted){
   document.getElementById('popular-list').innerHTML=sorted.slice(0,5).map((a,i)=>`<li onclick="showArticle('${a.id}')"><span class="pop-num">0${i+1}</span><span class="pop-title">${a.title}</span></li>`).join('');
   const tags=[...new Set(articles.map(a=>a.tag).filter(Boolean))];
   document.getElementById('tag-cloud').innerHTML=tags.map(t=>`<span class="tag" onclick="showSearch('${t}')">${t}</span>`).join('');
 }
+
+// ── ARTICLE RENDER ──
 function linkify(t){return t.replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');}
 function renderArticle(id){
   const a=articles.find(x=>x.id===id);
-  if(!a){showHome();return;}
+  if(!a){window.showHome();return;}
   document.getElementById('av-tag').textContent=a.tag||'';
   document.getElementById('av-title').textContent=a.title;
   document.getElementById('av-meta').innerHTML=`<span>By ${a.author}</span><span>·</span><span>${fmtDate(a.date)}</span>`;
@@ -399,58 +423,64 @@ function renderArticle(id){
     if(ph.caption)html+=`<p class="inline-caption">${ph.caption}</p>`;
   });
   document.getElementById('av-body').innerHTML=html;
-  renderComments(id);
+  loadComments(id);
 }
-function renderComments(id){
-  const cs=comments[id]||[];
-  document.getElementById('comments-list').innerHTML=cs.length?cs.map(c=>`<div class="comment"><div class="avatar" style="background:${colorFor(c.name)}">${initials(c.name)}</div><div class="comment-body"><div><span class="c-name">${c.name}</span><span class="c-date">${fmtDate(c.date)}</span></div><p class="c-text">${c.text}</p></div></div>`).join(''):'<p style="color:var(--muted);font-size:14px;margin-bottom:1rem;">No comments yet — be the first!</p>';
+
+// ── COMMENTS ──
+async function loadComments(articleId){
+  const el=document.getElementById('comments-list');
+  el.innerHTML='<div class="loading">Loading comments...</div>';
+  const snap=await getDocs(query(collection(db,'articles',articleId,'comments'),orderBy('date','asc')));
+  const cs=snap.docs.map(d=>d.data());
+  el.innerHTML=cs.length?cs.map(c=>`<div class="comment"><div class="avatar" style="background:${colorFor(c.name)}">${initials(c.name)}</div><div class="comment-body"><div><span class="c-name">${c.name}</span><span class="c-date">${fmtDate(c.date)}</span></div><p class="c-text">${c.text}</p></div></div>`).join(''):'<p style="color:var(--muted);font-size:14px;margin-bottom:1rem;">No comments yet — be the first!</p>';
 }
-function submitComment(){
+window.submitComment=async function(){
   const name=document.getElementById('c-name').value.trim();
   const text=document.getElementById('c-text').value.trim();
   if(!name||!text){alert('Please enter your name and a comment.');return;}
-  if(!comments[currentArticleId])comments[currentArticleId]=[];
-  comments[currentArticleId].push({name,text,date:new Date().toISOString()});
-  save();
+  await addDoc(collection(db,'articles',currentArticleId,'comments'),{name,text,date:serverTimestamp()});
   document.getElementById('c-name').value='';
   document.getElementById('c-email').value='';
   document.getElementById('c-text').value='';
-  renderComments(currentArticleId);
-}
-function handleAdminBtn(){if(isAdmin)showAdmin();else document.getElementById('login-modal').classList.add('open');}
-function closeLogin(){document.getElementById('login-modal').classList.remove('open');document.getElementById('login-err').style.display='none';}
-function doLogin(){
+  loadComments(currentArticleId);
+};
+
+// ── ADMIN AUTH ──
+window.handleAdminBtn=function(){if(isAdmin)showAdmin();else document.getElementById('login-modal').classList.add('open');};
+window.closeLogin=function(){document.getElementById('login-modal').classList.remove('open');document.getElementById('login-err').style.display='none';};
+window.doLogin=function(){
   const em=document.getElementById('login-email').value.trim();
   const pw=document.getElementById('login-pw').value;
-  if(em===ADMIN_EMAIL&&pw===ADMIN_PW){isAdmin=true;closeLogin();document.getElementById('admin-btn').classList.add('active');document.getElementById('admin-btn').textContent='Dashboard';showAdmin();}
+  if(em===ADMIN_EMAIL&&pw===ADMIN_PW){isAdmin=true;window.closeLogin();document.getElementById('admin-btn').classList.add('active');document.getElementById('admin-btn').textContent='Dashboard';showAdmin();}
   else document.getElementById('login-err').style.display='block';
-}
-function logout(){isAdmin=false;editingId=null;document.getElementById('admin-btn').classList.remove('active');document.getElementById('admin-btn').textContent='Admin';showHome();}
-function switchImgMode(mode){
+};
+window.logout=function(){isAdmin=false;editingId=null;document.getElementById('admin-btn').classList.remove('active');document.getElementById('admin-btn').textContent='Admin';window.showHome();};
+
+// ── COVER PHOTO ──
+window.switchImgMode=function(mode){
   imgMode=mode;
   document.getElementById('tb-upload').classList.toggle('active',mode==='upload');
   document.getElementById('tb-url').classList.toggle('active',mode==='url');
   document.getElementById('img-upload-zone').classList.toggle('hidden',mode==='url');
   document.getElementById('img-url-zone').classList.toggle('hidden',mode==='upload');
   document.getElementById('img-preview').style.display='none';
-}
-function previewCover(input){const file=input.files[0];if(!file)return;const r=new FileReader();r.onload=e=>{const p=document.getElementById('img-preview');p.src=e.target.result;p.style.display='block';};r.readAsDataURL(file);}
-function previewCoverUrl(url){const p=document.getElementById('img-preview');if(url){p.src=url;p.style.display='block';p.onerror=()=>p.style.display='none';}else p.style.display='none';}
+};
+window.previewCover=function(input){const file=input.files[0];if(!file)return;const r=new FileReader();r.onload=e=>{const p=document.getElementById('img-preview');p.src=e.target.result;p.style.display='block';};r.readAsDataURL(file);};
+window.previewCoverUrl=function(url){const p=document.getElementById('img-preview');if(url){p.src=url;p.style.display='block';p.onerror=()=>p.style.display='none';}else p.style.display='none';};
 function getCoverImg(cb){
   if(imgMode==='url'){cb(document.getElementById('e-img-url').value.trim()||null);return;}
   const file=document.getElementById('e-img-file').files[0];
   if(!file){cb(null);return;}
   const r=new FileReader();r.onload=e=>cb(e.target.result);r.readAsDataURL(file);
 }
-function addInlinePhoto(){inlinePhotos.push({id:uid(),img:null,caption:'',position:'end'});renderInlinePhotoList();}
-function removeInlinePhoto(id){inlinePhotos=inlinePhotos.filter(p=>p.id!==id);renderInlinePhotoList();}
-function updateInlinePos(id,val){const p=inlinePhotos.find(x=>x.id===id);if(p)p.position=val;}
-function updateInlineCaption(id,val){const p=inlinePhotos.find(x=>x.id===id);if(p)p.caption=val;}
-function updateInlineUrl(id,val){const p=inlinePhotos.find(x=>x.id===id);if(p&&val){p.img=val;renderInlinePhotoList();}}
-function loadInlineFile(id,input){
-  const file=input.files[0];if(!file)return;
-  const r=new FileReader();r.onload=e=>{const p=inlinePhotos.find(x=>x.id===id);if(p){p.img=e.target.result;renderInlinePhotoList();}};r.readAsDataURL(file);
-}
+
+// ── INLINE PHOTOS ──
+window.addInlinePhoto=function(){inlinePhotos.push({id:uid(),img:null,caption:'',position:'end'});renderInlinePhotoList();};
+window.removeInlinePhoto=function(id){inlinePhotos=inlinePhotos.filter(p=>p.id!==id);renderInlinePhotoList();};
+window.updateInlinePos=function(id,val){const p=inlinePhotos.find(x=>x.id===id);if(p)p.position=val;};
+window.updateInlineCaption=function(id,val){const p=inlinePhotos.find(x=>x.id===id);if(p)p.caption=val;};
+window.updateInlineUrl=function(id,val){const p=inlinePhotos.find(x=>x.id===id);if(p&&val){p.img=val;renderInlinePhotoList();}};
+window.loadInlineFile=function(id,input){const file=input.files[0];if(!file)return;const r=new FileReader();r.onload=e=>{const p=inlinePhotos.find(x=>x.id===id);if(p){p.img=e.target.result;renderInlinePhotoList();}};r.readAsDataURL(file);};
 function renderInlinePhotoList(){
   const bodyVal=document.getElementById('e-body').value;
   const paraCount=bodyVal.split(/\n\n+/).filter(p=>p.trim()).length;
@@ -458,27 +488,39 @@ function renderInlinePhotoList(){
   if(!inlinePhotos.length){el.innerHTML='';return;}
   el.innerHTML=inlinePhotos.map(ph=>{
     let opts=`<option value="end" ${ph.position==='end'?'selected':''}>At the end</option>`;
-    for(let i=0;i<Math.max(paraCount,1);i++) opts+=`<option value="after-para-${i}" ${ph.position===`after-para-${i}`?'selected':''}>After paragraph ${i+1}</option>`;
+    for(let i=0;i<Math.max(paraCount,1);i++)opts+=`<option value="after-para-${i}" ${ph.position===`after-para-${i}`?'selected':''}>After paragraph ${i+1}</option>`;
     const thumb=ph.img?`<img class="ipr-thumb" src="${ph.img}" alt=""/>`:`<div class="ipr-nothumb">🖼</div>`;
-    return `<div class="ipr" id="ipr-${ph.id}">${thumb}<div class="ipr-meta"><select onchange="updateInlinePos('${ph.id}',this.value)">${opts}</select><input type="text" placeholder="Caption (optional)" value="${ph.caption||''}" oninput="updateInlineCaption('${ph.id}',this.value)"/><div class="ipr-files"><input type="file" accept="image/*" onchange="loadInlineFile('${ph.id}',this)"/><input type="url" placeholder="or paste URL" oninput="updateInlineUrl('${ph.id}',this.value)"/></div></div><button class="btn-remove" onclick="removeInlinePhoto('${ph.id}')">×</button></div>`;
+    return `<div class="ipr">${thumb}<div class="ipr-meta"><select onchange="updateInlinePos('${ph.id}',this.value)">${opts}</select><input type="text" placeholder="Caption (optional)" value="${ph.caption||''}" oninput="updateInlineCaption('${ph.id}',this.value)"/><div class="ipr-files"><input type="file" accept="image/*" onchange="loadInlineFile('${ph.id}',this)"/><input type="url" placeholder="or paste URL" oninput="updateInlineUrl('${ph.id}',this.value)"/></div></div><button class="btn-remove" onclick="removeInlinePhoto('${ph.id}')">×</button></div>`;
   }).join('');
 }
-function saveArticle(){
+
+// ── SAVE ARTICLE ──
+window.saveArticle=async function(){
   const title=document.getElementById('e-title').value.trim();
   const author=document.getElementById('e-author').value.trim();
   const body=document.getElementById('e-body').value.trim();
   const errEl=document.getElementById('editor-err');
   if(!title||!author||!body){errEl.style.display='block';return;}
   errEl.style.display='none';
-  getCoverImg(img=>{
+  const btn=document.querySelector('.editor-actions .btn-primary');
+  btn.textContent='Publishing...';btn.disabled=true;
+  getCoverImg(async img=>{
     const tag=document.getElementById('e-tag').value.trim();
     const excerpt=document.getElementById('e-excerpt').value.trim();
     const photos=inlinePhotos.filter(p=>p.img);
-    if(editingId){const a=articles.find(x=>x.id===editingId);a.title=title;a.author=author;a.body=body;a.tag=tag;a.excerpt=excerpt;if(img)a.img=img;a.inlinePhotos=photos;}
-    else articles.unshift({id:'a'+Date.now(),title,author,body,tag,excerpt,img,inlinePhotos:photos,date:new Date().toISOString()});
-    save();resetEditor();renderAdminList();
+    try{
+      if(editingId){
+        const updates={title,author,body,tag,excerpt,inlinePhotos:photos};
+        if(img)updates.img=img;
+        await updateDoc(doc(db,'articles',editingId),updates);
+      } else {
+        await addDoc(collection(db,'articles'),{title,author,body,tag,excerpt,img:img||null,inlinePhotos:photos,date:serverTimestamp()});
+      }
+      resetEditor();renderAdminList();
+    }catch(e){alert('Error saving: '+e.message);}
+    btn.textContent='Publish article';btn.disabled=false;
   });
-}
+};
 function resetEditor(){
   ['e-title','e-author','e-body','e-tag','e-excerpt','e-img-url'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('e-img-file').value='';
@@ -487,8 +529,8 @@ function resetEditor(){
   document.getElementById('cancel-edit-btn').style.display='none';
   editingId=null;inlinePhotos=[];renderInlinePhotoList();
 }
-function cancelEdit(){resetEditor();}
-function editArticle(id){
+window.cancelEdit=function(){resetEditor();};
+window.editArticle=function(id){
   const a=articles.find(x=>x.id===id);
   document.getElementById('e-title').value=a.title;
   document.getElementById('e-author').value=a.author;
@@ -500,19 +542,20 @@ function editArticle(id){
   renderInlinePhotoList();
   document.getElementById('editor-heading').textContent='Edit Article';
   document.getElementById('cancel-edit-btn').style.display='inline-flex';
-  editingId=id;
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function deleteArticle(id){
+  editingId=id;window.scrollTo({top:0,behavior:'smooth'});
+};
+window.deleteArticle=async function(id){
   if(!confirm('Delete this article? This cannot be undone.'))return;
-  articles=articles.filter(a=>a.id!==id);delete comments[id];save();renderAdminList();
-}
+  await deleteDoc(doc(db,'articles',id));
+  if(editingId===id)resetEditor();
+};
 function renderAdminList(){
   const el=document.getElementById('admin-article-list');
-  if(!articles.length){el.innerHTML='<div class="empty-state"><p>No articles published yet. Write your first one above!</p></div>';return;}
-  el.innerHTML=[...articles].sort((a,b)=>new Date(b.date)-new Date(a.date)).map(a=>`<div class="admin-article-row"><div><div class="row-title">${a.title}</div><div class="row-meta">${a.author} · ${fmtDate(a.date)}${a.tag?' · '+a.tag:''}${(a.inlinePhotos||[]).length?' · '+(a.inlinePhotos||[]).length+' inline photo(s)':''}</div></div><div class="row-actions"><button class="btn-ghost" onclick="editArticle('${a.id}')">Edit</button><button class="btn-danger" onclick="deleteArticle('${a.id}')">Delete</button></div></div>`).join('');
+  if(!articles.length){el.innerHTML='<div class="empty-state"><p>No articles yet. Write your first one above!</p></div>';return;}
+  el.innerHTML=articles.map(a=>`<div class="admin-article-row"><div><div class="row-title">${a.title}</div><div class="row-meta">${a.author} · ${fmtDate(a.date)}${a.tag?' · '+a.tag:''}${(a.inlinePhotos||[]).length?' · '+(a.inlinePhotos||[]).length+' inline photo(s)':''}</div></div><div class="row-actions"><button class="btn-ghost" onclick="editArticle('${a.id}')">Edit</button><button class="btn-danger" onclick="deleteArticle('${a.id}')">Delete</button></div></div>`).join('');
 }
-load();showOnly('home-view');renderHome();
+
+showOnly('home-view');
 </script>
 </body>
 </html>
