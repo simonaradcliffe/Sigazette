@@ -3,7 +3,42 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sigazette</title>
+<title>Sigazette — Sports, Culture & More</title>
+<meta name="description" content="Sigazette is an independent publication covering sports, culture, and ideas. Thoughtful writing on the things that matter."/>
+<meta name="keywords" content="sigazette, sports, culture, essays, articles, blog"/>
+<meta name="author" content="Sigazette"/>
+<link rel="canonical" href="https://www.sigazette.com/"/>
+
+<!-- Open Graph (Facebook, LinkedIn, iMessage previews) -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Sigazette"/>
+<meta property="og:title" content="Sigazette — Sports, Culture & More"/>
+<meta property="og:description" content="Sigazette is an independent publication covering sports, culture, and ideas."/>
+<meta property="og:url" content="https://www.sigazette.com/"/>
+<meta property="og:image" content="https://www.sigazette.com/og-image.jpg"/>
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@sigazette"/>
+<meta name="twitter:title" content="Sigazette — Sports, Culture & More"/>
+<meta name="twitter:description" content="Sigazette is an independent publication covering sports, culture, and ideas."/>
+<meta name="twitter:image" content="https://www.sigazette.com/og-image.jpg"/>
+
+<!-- Structured data for Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Sigazette",
+  "url": "https://www.sigazette.com",
+  "description": "Sigazette is an independent publication covering sports, culture, and ideas.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.sigazette.com/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QRGD2EPR7Y"></script>
 <script>
   window.dataLayer=window.dataLayer||[];
@@ -354,7 +389,17 @@ function uid(){return 'p'+Date.now()+Math.random().toString(36).slice(2,5);}
 /* URL ROUTING — read/write hash */
 function getArticleUrl(id){return window.location.href.split('#')[0]+'#article-'+id;}
 function showOnly(id){['home-view','article-view','admin-panel','search-view'].forEach(v=>document.getElementById(v).style.display='none');document.getElementById(id).style.display='block';}
-window.showHome=()=>{history.pushState(null,'',window.location.pathname);showOnly('home-view');currentArticleId=null;document.getElementById('search-input').value='';};
+window.showHome=()=>{
+  history.pushState(null,'',window.location.pathname);
+  showOnly('home-view');
+  currentArticleId=null;
+  document.getElementById('search-input').value='';
+  document.title='Sigazette — Sports, Culture & More';
+  document.querySelector('meta[name="description"]').content='Sigazette is an independent publication covering sports, culture, and ideas.';
+  document.querySelector('meta[property="og:title"]').content='Sigazette — Sports, Culture & More';
+  document.querySelector('meta[property="og:url"]').content='https://www.sigazette.com/';
+  document.querySelector('meta[name="twitter:title"]').content='Sigazette — Sports, Culture & More';
+};
 window.showArticle=(id)=>{
   currentArticleId=id;
   history.pushState(null,'','#article-'+id);
@@ -454,6 +499,22 @@ function renderArticle(id){
   const a=articles.find(x=>x.id===id);
   if(!a){window.showHome();return;}
   document.title=a.title+' — Sigazette';
+  // update meta tags for this article
+  const desc=a.excerpt||a.body.slice(0,160).replace(/\n/g,' ');
+  document.querySelector('meta[name="description"]').content=desc;
+  document.querySelector('meta[property="og:title"]').content=a.title+' — Sigazette';
+  document.querySelector('meta[property="og:description"]').content=desc;
+  document.querySelector('meta[property="og:url"]').content='https://www.sigazette.com/#article-'+id;
+  document.querySelector('meta[name="twitter:title"]').content=a.title+' — Sigazette';
+  document.querySelector('meta[name="twitter:description"]').content=desc;
+  if(a.img){
+    document.querySelector('meta[property="og:image"]').content=a.img;
+    document.querySelector('meta[name="twitter:image"]').content=a.img;
+  }
+  // article structured data
+  let sd=document.getElementById('article-sd');
+  if(!sd){sd=document.createElement('script');sd.type='application/ld+json';sd.id='article-sd';document.head.appendChild(sd);}
+  sd.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article","headline":a.title,"description":desc,"author":{"@type":"Person","name":a.author},"publisher":{"@type":"Organization","name":"Sigazette","url":"https://www.sigazette.com"},"url":"https://www.sigazette.com/#article-"+id,"image":a.img||""});
   document.getElementById('av-tag').textContent=a.tag||'';
   document.getElementById('av-title').textContent=a.title;
   document.getElementById('av-meta').innerHTML=`
