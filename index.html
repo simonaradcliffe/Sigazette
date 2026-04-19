@@ -95,23 +95,26 @@ aside{position:sticky;top:72px;}
 .post-meta{font-size:12px;color:var(--muted);display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;}
 .post-meta-dot{color:var(--border);}
 .feat-smalls{display:grid;grid-template-columns:1fr 1fr;}
-.feat-small{padding:1.25rem;border-right:1px solid var(--border);cursor:pointer;transition:background .15s;}
+.feat-small{border-right:1px solid var(--border);cursor:pointer;transition:background .15s;overflow:hidden;}
 .feat-small:hover{background:#f5f3ef;}
 .feat-small:last-child{border-right:none;}
+.feat-small-img{width:100%;height:140px;object-fit:cover;display:block;background:linear-gradient(135deg,#d5e3db,#a8c4b4);}
+.feat-small-img-placeholder{width:100%;height:140px;background:linear-gradient(135deg,#d5e3db,#a8c4b4);display:flex;align-items:center;justify-content:center;font-size:1.8rem;opacity:.3;}
+.feat-small-body{padding:1rem 1.25rem;}
 .feat-small .feat-tag{color:var(--muted);}
 .feat-small h3{font-family:var(--serif);font-size:1rem;font-weight:700;line-height:1.35;margin-bottom:.4rem;}
 .feat-small p{font-size:13px;color:var(--muted);line-height:1.6;}
 .post-list{display:flex;flex-direction:column;gap:0;}
-.post-card{display:grid;grid-template-columns:1fr 130px;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--border);align-items:start;cursor:pointer;}
+.post-card{display:grid;grid-template-columns:1fr 160px;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--border);align-items:start;cursor:pointer;}
 .post-card:last-child{border-bottom:none;}
 .post-card:hover .post-card-title{color:var(--accent);}
 .post-card-tag{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem;}
 .post-card-tag::before{content:'';display:inline-block;width:16px;height:2px;background:var(--accent);border-radius:2px;}
 .post-card-title{font-family:var(--serif);font-size:1.15rem;font-weight:700;line-height:1.35;margin-bottom:.4rem;color:var(--ink);transition:color .2s;}
 .post-card-excerpt{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:.6rem;}
-.post-thumb{width:130px;height:92px;border-radius:8px;overflow:hidden;flex-shrink:0;background:linear-gradient(135deg,#d5e3db,#a8c4b4);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.post-thumb{width:160px;height:110px;border-radius:8px;overflow:hidden;flex-shrink:0;background:linear-gradient(135deg,#d5e3db,#a8c4b4);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.08);}
 .post-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-.post-thumb-icon{font-size:1.6rem;opacity:.3;}
+.post-thumb-icon{font-size:1.8rem;opacity:.3;}
 .sidebar-block{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1.5rem;}
 .popular-list{list-style:none;display:flex;flex-direction:column;gap:.85rem;}
 .popular-list li{display:flex;gap:.75rem;align-items:flex-start;cursor:pointer;}
@@ -487,7 +490,7 @@ function renderFeatured(sorted){
   if(!sorted.length){el.innerHTML='';return;}
   const[hero,...rest]=sorted;
   const imgHTML=hero.img?`<img src="${hero.img}" alt="" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"/>`:`<span style="font-size:3rem;opacity:.2;">📰</span>`;
-  const smalls=rest.slice(0,2).map(a=>`<div class="feat-small" onclick="showArticle('${a.id}')"><div class="feat-tag">${a.tag||''}</div><h3>${a.title}</h3><p>${a.excerpt||a.body.slice(0,100).replace(/\n/g,' ')}…</p></div>`).join('');
+  const smalls=rest.slice(0,2).map(a=>`<div class="feat-small" onclick="showArticle('${a.id}')">${a.img?`<img class="feat-small-img" src="${a.img}" alt="" onerror="this.style.display='none'"/>`:`<div class="feat-small-img-placeholder">📰</div>`}<div class="feat-small-body"><div class="feat-tag">${a.tag||''}</div><h3>${a.title}</h3><p>${a.excerpt||a.body.slice(0,80).replace(/\n/g,' ')}…</p></div></div>`).join('');
   el.innerHTML=`<div class="section-label">Featured</div><div class="featured-grid"><div class="feat-hero" onclick="showArticle('${hero.id}')" style="cursor:pointer;"><div class="feat-hero-img">${imgHTML}</div><div class="feat-hero-body"><div class="feat-tag">${hero.tag||''}</div><h2>${hero.title}</h2><p>${hero.excerpt||hero.body.slice(0,170).replace(/\n/g,' ')}${hero.body.length>170?'…':''}</p><div class="post-meta"><span>${hero.author}</span><span class="post-meta-dot">·</span><span>${fmtDate(hero.date)}</span></div></div></div>${smalls?`<div class="feat-smalls">${smalls}</div>`:''}</div>`;
 }
 function renderPostList(posts){document.getElementById('post-list').innerHTML=posts.length?posts.map(postCardHTML).join(''):'';}
