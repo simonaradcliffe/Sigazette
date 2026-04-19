@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sigazette — Sports, Culture & More</title>
+<title>Sigazette — Opinions and Discussions</title>
 <meta name="description" content="Sigazette is an independent publication covering sports, culture, and ideas. Thoughtful writing on the things that matter."/>
 <meta name="keywords" content="sigazette, sports, culture, essays, articles, blog"/>
 <meta name="author" content="Sigazette"/>
@@ -386,23 +386,23 @@ function initials(n){return n.trim().split(' ').map(w=>w[0]||'').join('').toUppe
 function fmtDate(ts){if(!ts)return '';const d=ts.toDate?ts.toDate():new Date(ts);return d.toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});}
 function uid(){return 'p'+Date.now()+Math.random().toString(36).slice(2,5);}
 
-/* URL ROUTING — read/write hash */
-function getArticleUrl(id){return window.location.href.split('#')[0]+'#article-'+id;}
+/* URL ROUTING */
+function getArticleUrl(id){return 'https://www.sigazette.com/article/'+id;}
 function showOnly(id){['home-view','article-view','admin-panel','search-view'].forEach(v=>document.getElementById(v).style.display='none');document.getElementById(id).style.display='block';}
 window.showHome=()=>{
-  history.pushState(null,'',window.location.pathname);
+  history.pushState(null,'','https://www.sigazette.com/');
   showOnly('home-view');
   currentArticleId=null;
   document.getElementById('search-input').value='';
-  document.title='Sigazette — Sports, Culture & More';
+  document.title='Sigazette — Opinions and Discussions';
   document.querySelector('meta[name="description"]').content='Sigazette is an independent publication covering sports, culture, and ideas.';
-  document.querySelector('meta[property="og:title"]').content='Sigazette — Sports, Culture & More';
+  document.querySelector('meta[property="og:title"]').content='Sigazette — Opinions and Discussions';
   document.querySelector('meta[property="og:url"]').content='https://www.sigazette.com/';
-  document.querySelector('meta[name="twitter:title"]').content='Sigazette — Sports, Culture & More';
+  document.querySelector('meta[name="twitter:title"]').content='Sigazette — Opinions and Discussions';
 };
 window.showArticle=(id)=>{
   currentArticleId=id;
-  history.pushState(null,'','#article-'+id);
+  history.pushState(null,'','https://www.sigazette.com/article/'+id);
   showOnly('article-view');
   renderArticle(id);
   window.scrollTo(0,0);
@@ -419,11 +419,14 @@ window.handleSearch=(v)=>{clearTimeout(searchTimer);if(!v.trim())return;searchTi
 window.doSearch=()=>{const q=document.getElementById('search-input').value.trim();if(q)window.showSearch(q);};
 
 /* Handle back/forward browser buttons */
-window.addEventListener('popstate',()=>checkHash());
-function checkHash(){
+window.addEventListener('popstate',()=>checkUrl());
+function checkUrl(){
+  const path=window.location.pathname;
   const hash=window.location.hash;
-  if(hash.startsWith('#article-')){
-    const id=hash.replace('#article-','');
+  let id=null;
+  if(path.startsWith('/article/')) id=path.replace('/article/','');
+  else if(hash.startsWith('#article-')) id=hash.replace('#article-','');
+  if(id){
     const a=articles.find(x=>x.id===id);
     if(a){currentArticleId=id;showOnly('article-view');renderArticle(id);window.scrollTo(0,0);return;}
   }
@@ -451,9 +454,9 @@ onSnapshot(q,snap=>{
   articles=snap.docs.map(d=>({id:d.id,...d.data()}));
   renderHome();
   if(isAdmin)renderAdminList();
-  /* if URL has article hash, open it once articles load */
-  if(window.location.hash.startsWith('#article-')&&document.getElementById('article-view').style.display!=='block'){
-    checkHash();
+  /* if URL has article path, open it once articles load */
+  if((window.location.pathname.startsWith('/article/')||window.location.hash.startsWith('#article-'))&&document.getElementById('article-view').style.display!=='block'){
+    checkUrl();
   }
 });
 
@@ -628,9 +631,9 @@ function renderAdminList(){
   el.innerHTML=articles.map(a=>`<div class="admin-article-row"><div><div class="row-title">${a.title}</div><div class="row-meta">${a.author} · ${fmtDate(a.date)}${a.tag?' · '+a.tag:''}${(a.inlinePhotos||[]).length?' · '+(a.inlinePhotos||[]).length+' inline photo(s)':''}</div></div><div class="row-actions"><button class="btn-ghost" onclick="editArticle('${a.id}')">Edit</button><button class="btn-danger" onclick="deleteArticle('${a.id}')">Delete</button></div></div>`).join('');
 }
 
-/* Check URL hash on load */
+/* Check URL on load */
 showOnly('home-view');
-checkHash();
+checkUrl();
 </script>
 </body>
 </html>
