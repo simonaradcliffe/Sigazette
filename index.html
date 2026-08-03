@@ -5,49 +5,25 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Sigazette — Opinions and Discussions</title>
-<meta name="description" content="Sigazette is an independent publication covering sports, culture, and ideas. Thoughtful writing on the things that matter."/>
-<meta name="keywords" content="sigazette, sports, culture, essays, articles, blog"/>
+<meta name="description" content="Sigazette is a Vancouver-based independent sports publication with in-depth analysis, trade breakdowns, and opinion pieces for fans who want more than the headlines."/>
+<meta name="keywords" content="sigazette, sports, NFL, NBA, NHL, MLB, culture, essays, articles, blog, Vancouver"/>
 <meta name="author" content="Sigazette"/>
 <link rel="canonical" href="https://www.sigazette.com/"/>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a3c2e'/%3E%3Ctext x='16' y='24' font-family='Georgia,serif' font-size='22' font-weight='700' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E"/>
-
-<!-- Open Graph (Facebook, LinkedIn, iMessage previews) -->
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Sigazette"/>
-<meta property="og:title" content="Sigazette — Sports, Culture & More"/>
-<meta property="og:description" content="Sigazette is an independent publication covering sports, culture, and ideas."/>
+<meta property="og:title" content="Sigazette — Opinions and Discussions"/>
+<meta property="og:description" content="Sigazette is a Vancouver-based independent sports publication with in-depth analysis, trade breakdowns, and opinion pieces."/>
 <meta property="og:url" content="https://www.sigazette.com/"/>
 <meta property="og:image" content="https://www.sigazette.com/og-image.jpg"/>
-
-<!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@sigazette"/>
-<meta name="twitter:title" content="Sigazette — Sports, Culture & More"/>
-<meta name="twitter:description" content="Sigazette is an independent publication covering sports, culture, and ideas."/>
+<meta name="twitter:title" content="Sigazette — Opinions and Discussions"/>
+<meta name="twitter:description" content="Sigazette is a Vancouver-based independent sports publication with in-depth analysis, trade breakdowns, and opinion pieces."/>
 <meta name="twitter:image" content="https://www.sigazette.com/og-image.jpg"/>
-
-<!-- Structured data for Google -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Sigazette",
-  "url": "https://www.sigazette.com",
-  "description": "Sigazette is an independent publication covering sports, culture, and ideas.",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://www.sigazette.com/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Sigazette","url":"https://www.sigazette.com","description":"Sigazette is a Vancouver-based independent sports publication."}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QRGD2EPR7Y"></script>
-<script>
-  window.dataLayer=window.dataLayer||[];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js',new Date());
-  gtag('config','G-QRGD2EPR7Y');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QRGD2EPR7Y');</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -62,29 +38,36 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);min-height:10
 a{color:inherit;text-decoration:none;}
 button{cursor:pointer;font-family:var(--sans);}
 input,textarea,select{font-family:var(--sans);}
+img{max-width:100%;}
+
+/* NAV */
 nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;}
-.nav-top{max-width:1160px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
-.nav-logo{font-family:var(--serif);font-size:1.75rem;font-weight:700;letter-spacing:-0.02em;color:var(--ink);}
+.nav-top{max-width:1160px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;height:58px;}
+.nav-logo{font-family:var(--serif);font-size:1.65rem;font-weight:700;letter-spacing:-0.02em;color:var(--ink);flex-shrink:0;}
 .nav-logo span{color:var(--accent);}
-.nav-right{display:flex;align-items:center;gap:1rem;}
-.nav-links{display:flex;gap:1.5rem;list-style:none;}
-.nav-links a{font-size:13px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;transition:color .2s;}
+.nav-right{display:flex;align-items:center;gap:.75rem;}
+.nav-links{display:flex;gap:1.25rem;list-style:none;}
+.nav-links a{font-size:12px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;transition:color .2s;cursor:pointer;}
 .nav-links a:hover{color:var(--ink);}
-.nav-search{border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:13px;color:var(--ink);background:var(--bg);outline:none;width:130px;transition:width .3s,border-color .2s;}
-.nav-search:focus{width:180px;border-color:var(--accent);}
-.btn-admin{font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;background:none;border:1px solid var(--border);border-radius:4px;padding:5px 12px;color:var(--muted);transition:all .2s;}
+.nav-search{border:1px solid var(--border);border-radius:20px;padding:5px 12px;font-size:13px;color:var(--ink);background:var(--bg);outline:none;width:120px;transition:width .3s,border-color .2s;}
+.nav-search:focus{width:160px;border-color:var(--accent);}
+.btn-admin{font-size:11px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;background:none;border:1px solid var(--border);border-radius:4px;padding:5px 10px;color:var(--muted);transition:all .2s;white-space:nowrap;}
 .btn-admin:hover{border-color:var(--accent);color:var(--accent);}
 .btn-admin.active{background:var(--accent);color:var(--white);border-color:var(--accent);}
+
+/* ADS */
 .ad-leaderboard{display:none;}
 .ad-box{border-radius:8px;overflow:hidden;position:relative;background-color:#ece9e2;background-image:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(0,0,0,.018) 10px,rgba(0,0,0,.018) 11px),repeating-linear-gradient(-45deg,transparent,transparent 10px,rgba(0,0,0,.018) 10px,rgba(0,0,0,.018) 11px);}
-.ad-label{display:none;}
-.ad-box-inner{display:none;}
-.ad-sidebar{margin-bottom:1.5rem;}
-.ad-sidebar .ad-box{height:180px;}
-.page{max-width:1160px;margin:0 auto;padding:1.5rem 1.5rem;display:grid;grid-template-columns:1fr 220px;gap:2.5rem;align-items:start;}
+.ad-label{display:none;}.ad-box-inner{display:none;}
+.ad-sidebar{margin-bottom:1.5rem;}.ad-sidebar .ad-box{height:180px;}
+
+/* LAYOUT */
+.page{max-width:1160px;margin:0 auto;padding:1.5rem 1.25rem;display:grid;grid-template-columns:1fr 210px;gap:2.5rem;align-items:start;}
 main{min-width:0;}
 aside{position:sticky;top:72px;}
 .section-label{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border-bottom:2px solid var(--accent);display:inline-block;padding-bottom:3px;margin-bottom:1.5rem;}
+
+/* FEATURED */
 .featured-grid{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:2.5rem;}
 .feat-hero{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
 .feat-hero-img{min-height:260px;background:#d5e3db;display:flex;align-items:center;justify-content:center;overflow:hidden;}
@@ -93,61 +76,91 @@ aside{position:sticky;top:72px;}
 .feat-tag{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;}
 .feat-hero-body h2{font-family:var(--serif);font-size:1.5rem;font-weight:700;line-height:1.3;margin-bottom:.6rem;}
 .feat-hero-body p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:.75rem;}
-.post-meta{font-size:12px;color:var(--muted);display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;}
+.post-meta{font-size:12px;color:var(--muted);display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;}
 .post-meta-dot{color:var(--border);}
-/* Featured smalls — horizontal layout */
+.reading-time{font-size:11px;color:var(--muted);background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1px 7px;}
 .feat-smalls{display:flex;flex-direction:column;}
-.feat-small{display:grid;grid-template-columns:120px 1fr;border-top:1px solid var(--border);cursor:pointer;transition:background .15s;overflow:hidden;}
+.feat-small{display:grid;grid-template-columns:110px 1fr;border-top:1px solid var(--border);cursor:pointer;transition:background .15s;overflow:hidden;}
 .feat-small:hover{background:#f5f3ef;}
-.feat-small-img{width:120px;height:90px;object-fit:cover;display:block;background:linear-gradient(135deg,#d5e3db,#a8c4b4);}
-.feat-small-img-placeholder{width:120px;height:90px;background:linear-gradient(135deg,#d5e3db,#a8c4b4);display:flex;align-items:center;justify-content:center;font-size:1.5rem;opacity:.3;}
-.feat-small-body{padding:.85rem 1.1rem;display:flex;flex-direction:column;justify-content:center;}
-.feat-small .feat-tag{color:var(--muted);margin-bottom:.25rem;}
-.feat-small h3{font-family:var(--serif);font-size:.95rem;font-weight:700;line-height:1.3;margin-bottom:.25rem;}
+.feat-small-img{width:110px;height:82px;object-fit:cover;display:block;background:linear-gradient(135deg,#d5e3db,#a8c4b4);}
+.feat-small-img-placeholder{width:110px;height:82px;background:linear-gradient(135deg,#d5e3db,#a8c4b4);display:flex;align-items:center;justify-content:center;font-size:1.3rem;opacity:.3;}
+.feat-small-body{padding:.8rem 1rem;display:flex;flex-direction:column;justify-content:center;}
+.feat-small .feat-tag{color:var(--muted);margin-bottom:.2rem;}
+.feat-small h3{font-family:var(--serif);font-size:.9rem;font-weight:700;line-height:1.3;margin-bottom:.2rem;}
 .feat-small p{font-size:12px;color:var(--muted);line-height:1.5;}
-/* Post cards */
-.post-list{display:flex;flex-direction:column;gap:0;}
-.post-card{display:grid;grid-template-columns:1fr 140px;gap:1.25rem;padding:1.25rem 0;border-bottom:1px solid var(--border);align-items:start;cursor:pointer;}
+
+/* POST CARDS */
+.post-list{display:flex;flex-direction:column;}
+.post-card{display:grid;grid-template-columns:1fr 130px;gap:1.25rem;padding:1.25rem 0;border-bottom:1px solid var(--border);align-items:start;cursor:pointer;}
 .post-card:last-child{border-bottom:none;}
 .post-card:hover .post-card-title{color:var(--accent);}
-.post-card-tag{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem;}
-.post-card-tag::before{content:'';display:inline-block;width:16px;height:2px;background:var(--accent);border-radius:2px;}
-.post-card-title{font-family:var(--serif);font-size:1.1rem;font-weight:700;line-height:1.35;margin-bottom:.35rem;color:var(--ink);transition:color .2s;}
+.post-card-tag{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.35rem;display:flex;align-items:center;gap:.4rem;}
+.post-card-tag::before{content:'';display:inline-block;width:14px;height:2px;background:var(--accent);border-radius:2px;}
+.post-card-title{font-family:var(--serif);font-size:1.05rem;font-weight:700;line-height:1.35;margin-bottom:.3rem;color:var(--ink);transition:color .2s;}
 .post-card-excerpt{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:.5rem;}
 .read-more{font-size:12px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:3px;}
 .read-more::after{content:'→';}
-.post-thumb{width:140px;height:100px;border-radius:8px;overflow:hidden;flex-shrink:0;background:linear-gradient(135deg,#d5e3db,#a8c4b4);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.post-thumb{width:130px;height:92px;border-radius:8px;overflow:hidden;flex-shrink:0;background:linear-gradient(135deg,#d5e3db,#a8c4b4);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.08);}
 .post-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-.post-thumb-icon{font-size:1.8rem;opacity:.3;}
-.sidebar-block{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1.5rem;}
-.popular-list{list-style:none;display:flex;flex-direction:column;gap:.85rem;}
-.popular-list li{display:flex;gap:.75rem;align-items:flex-start;cursor:pointer;}
-.pop-num{font-family:var(--serif);font-size:1.1rem;color:#d8d4cc;font-weight:700;flex-shrink:0;line-height:1.3;}
-.pop-title{font-size:13px;color:var(--ink);line-height:1.45;transition:color .2s;}
+.post-thumb-icon{font-size:1.6rem;opacity:.3;}
+
+/* SIDEBAR */
+.sidebar-block{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.1rem;margin-bottom:1.5rem;}
+.popular-list{list-style:none;display:flex;flex-direction:column;gap:.8rem;}
+.popular-list li{display:flex;gap:.65rem;align-items:flex-start;cursor:pointer;}
+.pop-num{font-family:var(--serif);font-size:1rem;color:#d8d4cc;font-weight:700;flex-shrink:0;line-height:1.3;}
+.pop-title{font-size:12px;color:var(--ink);line-height:1.4;transition:color .2s;}
 .pop-title:hover{color:var(--accent);}
-.tags{display:flex;flex-wrap:wrap;gap:6px;}
-.tag{font-size:12px;background:var(--accent-light);color:var(--accent);padding:4px 12px;border-radius:20px;cursor:pointer;transition:background .15s;font-weight:500;}
+.tags{display:flex;flex-wrap:wrap;gap:5px;}
+.tag{font-size:11px;background:var(--accent-light);color:var(--accent);padding:3px 10px;border-radius:20px;cursor:pointer;transition:background .15s;font-weight:500;}
 .tag:hover{background:#c8dfd1;}
-#article-view{display:none;max-width:700px;margin:2.5rem auto;padding:0 1.5rem 4rem;}
+
+/* ABOUT PAGE */
+#about-view{display:none;max-width:760px;margin:2.5rem auto;padding:0 1.25rem 4rem;}
+.about-header{text-align:center;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border);}
+.about-photo{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 1.25rem;display:block;border:3px solid var(--border);box-shadow:0 4px 16px rgba(0,0,0,.1);}
+.about-photo-placeholder{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#d5e3db,#a8c4b4);margin:0 auto 1.25rem;display:flex;align-items:center;justify-content:center;font-size:2.5rem;border:3px solid var(--border);}
+.about-title{font-family:var(--serif);font-size:2rem;font-weight:700;margin-bottom:.5rem;}
+.about-title span{color:var(--accent);}
+.about-subtitle{font-size:14px;color:var(--muted);margin-bottom:1.25rem;}
+.about-socials{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;}
+.social-link{display:inline-flex;align-items:center;gap:.4rem;font-size:13px;font-weight:500;color:var(--accent);border:1px solid var(--accent);border-radius:20px;padding:5px 14px;transition:all .2s;}
+.social-link:hover{background:var(--accent);color:var(--white);}
+.about-body{font-family:var(--tnr);font-size:1.05rem;line-height:1.85;color:#1a1a1a;}
+.about-body p{margin-bottom:1.3rem;}
+
+/* ARTICLE VIEW */
+#article-view{display:none;max-width:700px;margin:2rem auto;padding:0 1.25rem 4rem;}
 .article-tag{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem;}
 .article-tag::before{content:'';display:inline-block;width:20px;height:2px;background:var(--accent);border-radius:2px;}
-#article-view h1{font-family:var(--serif);font-size:2.3rem;font-weight:700;line-height:1.22;margin-bottom:.75rem;}
+#article-view h1{font-family:var(--serif);font-size:2.1rem;font-weight:700;line-height:1.22;margin-bottom:.75rem;}
 .article-meta{font-size:13px;color:var(--muted);margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;}
-
-/* SHARE BUTTON */
 .share-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--muted);transition:all .2s;margin-left:auto;}
 .share-btn:hover{border-color:var(--accent);color:var(--accent);}
 .share-btn svg{width:13px;height:13px;flex-shrink:0;}
 .share-btn.copied{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
-
 .article-hero-img{width:100%;max-height:440px;object-fit:cover;border-radius:10px;margin-bottom:2rem;display:block;box-shadow:0 4px 20px rgba(0,0,0,.1);}
 .article-body{font-family:var(--tnr);font-size:1.1rem;line-height:1.85;color:#1a1a1a;word-wrap:break-word;overflow-wrap:break-word;}
 .article-body p{margin-bottom:1.4rem;word-break:break-word;}
 .article-body a{color:var(--accent);text-decoration:underline;}
 .article-body .inline-img{width:100%;border-radius:8px;margin:1.5rem 0;display:block;box-shadow:0 2px 12px rgba(0,0,0,.1);}
 .article-body .inline-caption{font-size:13px;color:var(--muted);text-align:center;margin-top:-.75rem;margin-bottom:1.5rem;font-family:var(--sans);font-style:italic;}
-.back-btn{background:none;border:none;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;padding:0;margin-bottom:1.5rem;transition:color .2s;}
+.back-btn{background:none;border:none;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;padding:0;margin-bottom:1.5rem;transition:color .2s;cursor:pointer;}
 .back-btn:hover{color:var(--accent);}
+
+/* RELATED */
+.related-section{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem;}
+.related-card{cursor:pointer;border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:box-shadow .2s;}
+.related-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.08);}
+.related-card-img{width:100%;height:80px;object-fit:cover;display:block;background:linear-gradient(135deg,#d5e3db,#a8c4b4);}
+.related-card-img-placeholder{width:100%;height:80px;background:linear-gradient(135deg,#d5e3db,#a8c4b4);display:flex;align-items:center;justify-content:center;font-size:1.3rem;opacity:.3;}
+.related-card-body{padding:.75rem;}
+.related-card-tag{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;}
+.related-card-title{font-family:var(--serif);font-size:.85rem;font-weight:700;line-height:1.3;color:var(--ink);}
+.related-card:hover .related-card-title{color:var(--accent);}
+
+/* COMMENTS */
 .comments-section{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);}
 .comment{display:flex;gap:.85rem;margin-bottom:1.25rem;}
 .avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--white);text-transform:uppercase;}
@@ -164,6 +177,8 @@ textarea.inp{height:85px;resize:vertical;margin-bottom:.65rem;}
 .btn-primary:hover{background:#0f2a1e;}
 .btn-danger{background:var(--red);color:var(--white);border:none;border-radius:6px;padding:6px 14px;font-size:12px;font-weight:500;}
 .btn-danger:hover{background:#a93226;}
+
+/* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;align-items:center;justify-content:center;}
 .modal-overlay.open{display:flex;}
 .modal{background:var(--white);border-radius:12px;padding:2rem;width:90%;max-width:480px;max-height:90vh;overflow-y:auto;}
@@ -174,11 +189,13 @@ textarea.inp{height:85px;resize:vertical;margin-bottom:.65rem;}
 .btn-ghost{background:none;border:1px solid var(--border);border-radius:6px;padding:8px 16px;font-size:13px;color:var(--muted);transition:all .2s;}
 .btn-ghost:hover{border-color:var(--ink);color:var(--ink);}
 .err-msg{color:var(--red);font-size:13px;margin-top:.5rem;display:none;}
-#admin-panel{display:none;max-width:900px;margin:2rem auto;padding:0 1.5rem 4rem;}
+
+/* ADMIN */
+#admin-panel{display:none;max-width:900px;margin:2rem auto;padding:0 1.25rem 4rem;}
 .admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:2px solid var(--border);}
 .admin-header h2{font-family:var(--serif);font-size:1.6rem;font-weight:700;}
-.article-editor{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.75rem;margin-bottom:2rem;}
-.article-editor>h3{font-family:var(--serif);font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;}
+.admin-section{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.75rem;margin-bottom:2rem;}
+.admin-section>h3{font-family:var(--serif);font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;}
 .editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem;}
 .inp-area{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s;}
 .inp-area:focus{border-color:var(--accent);}
@@ -210,19 +227,54 @@ textarea.inp{height:85px;resize:vertical;margin-bottom:.65rem;}
 .row-title{font-size:14px;font-weight:500;}
 .row-meta{font-size:12px;color:var(--muted);}
 .row-actions{display:flex;gap:.5rem;flex-shrink:0;}
+.about-img-preview{width:100px;height:100px;border-radius:50%;object-fit:cover;margin-top:.5rem;display:none;}
+
+/* MISC */
 .empty-state{text-align:center;padding:3rem 1rem;color:var(--muted);}
 .empty-state p{font-size:14px;margin-top:.5rem;}
-#search-view{display:none;max-width:700px;margin:2rem auto;padding:0 1.5rem 4rem;}
+#search-view{display:none;max-width:700px;margin:2rem auto;padding:0 1.25rem 4rem;}
 #search-view h2{font-family:var(--serif);font-size:1.5rem;margin-bottom:1.5rem;}
-footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;margin-top:3rem;}
+footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1.25rem;text-align:center;margin-top:3rem;}
 .footer-logo{font-family:var(--serif);font-size:1.2rem;font-weight:700;}
 .footer-logo span{color:var(--accent);}
-.footer-links{display:flex;gap:1.5rem;justify-content:center;list-style:none;margin:.75rem 0;}
-.footer-links a{font-size:12px;color:var(--muted);}
+.footer-links{display:flex;gap:1.5rem;justify-content:center;list-style:none;margin:.75rem 0;flex-wrap:wrap;}
+.footer-links a{font-size:12px;color:var(--muted);cursor:pointer;}
 .footer-links a:hover{color:var(--accent);}
 .footer-copy{font-size:12px;color:var(--muted);}
 .hidden{display:none!important;}
 .loading{text-align:center;padding:2rem;color:var(--muted);font-size:14px;}
+
+/* MOBILE */
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .nav-search{width:100px;}
+  .page{grid-template-columns:1fr;gap:1.5rem;padding:1rem;}
+  aside{position:static;display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .ad-sidebar{display:none;}
+  .feat-hero{grid-template-columns:1fr;}
+  .feat-hero-img{min-height:200px;}
+  .feat-hero-body{padding:1.25rem;}
+  .feat-hero-body h2{font-size:1.25rem;}
+  .feat-small{grid-template-columns:90px 1fr;}
+  .feat-small-img,.feat-small-img-placeholder{width:90px;height:68px;}
+  .post-card{grid-template-columns:1fr 90px;gap:1rem;padding:1rem 0;}
+  .post-thumb{width:90px;height:68px;}
+  .post-card-title{font-size:.95rem;}
+  .post-card-excerpt{display:none;}
+  #article-view{margin:1rem auto;padding:0 1rem 3rem;}
+  #article-view h1{font-size:1.6rem;}
+  .related-grid{grid-template-columns:1fr 1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .editor-grid{grid-template-columns:1fr;}
+  .ipr{grid-template-columns:60px 1fr 24px;}
+  .about-view{padding:0 1rem 3rem;}
+  #about-view h1{font-size:1.6rem;}
+}
+@media(max-width:480px){
+  .nav-logo{font-size:1.35rem;}
+  .related-grid{grid-template-columns:1fr;}
+  aside{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -232,8 +284,9 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
     <a class="nav-logo" href="#" onclick="showHome()">Siga<span>zette</span></a>
     <div class="nav-right">
       <ul class="nav-links">
-        <li><a href="#" onclick="showHome()">Home</a></li>
-        <li><a href="#" onclick="showHome()">Archive</a></li>
+        <li><a onclick="showHome()">Home</a></li>
+        <li><a onclick="showAbout()">About</a></li>
+        <li><a onclick="showHome()">Archive</a></li>
       </ul>
       <input class="nav-search" type="text" placeholder="Search..." id="search-input" oninput="handleSearch(this.value)" onkeydown="if(event.key==='Enter')doSearch()"/>
       <button class="btn-admin" id="admin-btn" onclick="handleAdminBtn()">Admin</button>
@@ -256,8 +309,8 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
   </div>
 </div>
 
+<!-- HOME -->
 <div id="home-view">
-  <div class="ad-leaderboard"><div class="ad-box"></div></div>
   <div class="page">
     <main>
       <div id="featured-section"></div>
@@ -269,20 +322,33 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
       </div>
     </main>
     <aside>
-      <div class="ad-sidebar"><div class="ad-box" style="height:220px;"></div></div>
+      <div class="ad-sidebar"><div class="ad-box" style="height:180px;"></div></div>
       <div class="sidebar-block">
         <div class="section-label">Most Read</div>
         <ul class="popular-list" id="popular-list"></ul>
       </div>
-      <div class="sidebar-block" style="margin-top:1.5rem;">
+      <div class="sidebar-block" style="margin-top:1rem;">
         <div class="section-label">Topics</div>
         <div class="tags" id="tag-cloud"></div>
       </div>
-      <div class="ad-sidebar" style="margin-top:1.5rem;"><div class="ad-box" style="height:220px;"></div></div>
+      <div class="ad-sidebar" style="margin-top:1rem;"><div class="ad-box" style="height:180px;"></div></div>
     </aside>
   </div>
 </div>
 
+<!-- ABOUT -->
+<div id="about-view">
+  <button class="back-btn" onclick="showHome()">← Back to Sigazette</button>
+  <div class="about-header">
+    <div id="about-photo-el"></div>
+    <h1 class="about-title">Siga<span>zette</span></h1>
+    <p class="about-subtitle" id="about-subtitle-el"></p>
+    <div class="about-socials" id="about-socials-el"></div>
+  </div>
+  <div class="about-body" id="about-body-el"></div>
+</div>
+
+<!-- ARTICLE -->
 <div id="article-view">
   <button class="back-btn" onclick="showHome()">← Back to Sigazette</button>
   <div class="article-tag" id="av-tag"></div>
@@ -290,6 +356,7 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
   <div class="article-meta" id="av-meta"></div>
   <img class="article-hero-img" id="av-img" src="" alt="" style="display:none;"/>
   <div class="article-body" id="av-body"></div>
+  <div class="related-section" id="related-section"></div>
   <div class="comments-section">
     <div class="section-label">Comments</div>
     <div id="comments-list"></div>
@@ -305,25 +372,63 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
   </div>
 </div>
 
+<!-- SEARCH -->
 <div id="search-view">
   <button class="back-btn" onclick="showHome()">← Back</button>
   <h2 id="search-heading"></h2>
   <div class="post-list" id="search-results"></div>
 </div>
 
+<!-- ADMIN -->
 <div id="admin-panel">
   <div class="admin-header">
     <h2>Admin — Sigazette</h2>
     <button class="btn-ghost" onclick="logout()">Sign out</button>
   </div>
-  <div class="article-editor">
+
+  <!-- ABOUT EDITOR -->
+  <div class="admin-section">
+    <h3>Edit About Page</h3>
+    <div style="margin-bottom:.75rem;">
+      <span class="lbl">Tagline / Subtitle</span>
+      <input class="inp-area" type="text" id="about-subtitle" placeholder="e.g. Vancouver-based sports opinions and discussions"/>
+    </div>
+    <div style="margin-bottom:.75rem;">
+      <span class="lbl">About Text (press Enter twice for paragraphs)</span>
+      <textarea class="inp-area" id="about-text" style="height:180px;resize:vertical;" placeholder="Write about Sigazette, what you cover, your mission..."></textarea>
+    </div>
+    <div style="margin-bottom:.75rem;">
+      <span class="lbl">Profile / Logo Photo</span>
+      <div class="img-source-toggle">
+        <button class="toggle-btn active" id="about-tb-upload" onclick="switchAboutImgMode('upload')">Upload</button>
+        <button class="toggle-btn" id="about-tb-url" onclick="switchAboutImgMode('url')">Paste URL</button>
+      </div>
+      <div id="about-img-upload-zone"><input class="inp-area" type="file" id="about-img-file" accept="image/*" onchange="previewAboutImg(this)"/></div>
+      <div id="about-img-url-zone" class="hidden"><input class="inp-area" type="url" id="about-img-url" placeholder="https://..." oninput="previewAboutImgUrl(this.value)"/></div>
+      <img class="about-img-preview" id="about-img-preview" src="" alt=""/>
+    </div>
+    <div style="margin-bottom:.75rem;">
+      <span class="lbl">Social Media Links</span>
+      <div style="display:flex;flex-direction:column;gap:.5rem;">
+        <input class="inp-area" type="url" id="about-twitter" placeholder="Twitter/X URL e.g. https://twitter.com/sigazette"/>
+        <input class="inp-area" type="url" id="about-instagram" placeholder="Instagram URL"/>
+        <input class="inp-area" type="url" id="about-tiktok" placeholder="TikTok URL"/>
+        <input class="inp-area" type="url" id="about-email" placeholder="Email e.g. mailto:hello@sigazette.com"/>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="saveAbout()">Save About Page</button>
+    <div class="err-msg" id="about-err">Please add some text before saving.</div>
+  </div>
+
+  <!-- ARTICLE EDITOR -->
+  <div class="admin-section">
     <h3 id="editor-heading">New Article</h3>
     <div class="editor-grid">
       <div><span class="lbl">Title</span><input class="inp-area" type="text" id="e-title" placeholder="Article headline"/></div>
       <div><span class="lbl">Author</span><input class="inp-area" type="text" id="e-author" placeholder="e.g. Jane Smith"/></div>
     </div>
     <div class="editor-grid">
-      <div><span class="lbl">Topic / Tag</span><input class="inp-area" type="text" id="e-tag" placeholder="e.g. Sports, Culture"/></div>
+      <div><span class="lbl">Topic / Tag</span><input class="inp-area" type="text" id="e-tag" placeholder="e.g. Sports, NFL, NHL"/></div>
       <div><span class="lbl">Excerpt (optional)</span><input class="inp-area" type="text" id="e-excerpt" placeholder="Short summary for home page"/></div>
     </div>
     <div style="margin-bottom:.75rem;">
@@ -352,6 +457,7 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
     </div>
     <div class="err-msg" id="editor-err">Please fill in the title, author, and body.</div>
   </div>
+
   <div class="admin-articles">
     <h3>Published Articles</h3>
     <div id="admin-article-list"></div>
@@ -361,16 +467,17 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
 <footer>
   <div class="footer-logo">Siga<span>zette</span></div>
   <ul class="footer-links">
-    <li><a href="#" onclick="showHome()">Home</a></li>
-    <li><a href="#">Archive</a></li>
-    <li><a href="#">Advertise</a></li>
+    <li><a onclick="showHome()">Home</a></li>
+    <li><a onclick="showAbout()">About</a></li>
+    <li><a onclick="showHome()">Archive</a></li>
+    <li><a>Advertise</a></li>
   </ul>
   <p class="footer-copy">© 2026 Sigazette. All rights reserved.</p>
 </footer>
 
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc, query, orderBy, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc, setDoc, getDoc, query, orderBy, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig={
   apiKey:"AIzaSyAaVwL4Jn6YQ66qbMZqIEIgbSWNyOze2P0",
@@ -385,36 +492,22 @@ const db=getFirestore(app);
 
 const ADMIN_EMAIL='admin@sigazette.com';
 const ADMIN_PW='sigazette2026';
-let articles=[],isAdmin=false,editingId=null,currentArticleId=null,imgMode='upload',inlinePhotos=[];
+let articles=[],isAdmin=false,editingId=null,currentArticleId=null,imgMode='upload',inlinePhotos=[],aboutImgMode='upload',aboutData={};
 
 const AVATARS=['#5a87a0','#8a6fa5','#1a3c2e','#c0392b','#d4813a','#3a6e9e'];
 function colorFor(n){let h=0;for(let c of n)h=c.charCodeAt(0)+((h<<5)-h);return AVATARS[Math.abs(h)%AVATARS.length];}
 function initials(n){return n.trim().split(' ').map(w=>w[0]||'').join('').toUpperCase().slice(0,2)||'?';}
 function fmtDate(ts){if(!ts)return '';const d=ts.toDate?ts.toDate():new Date(ts);return d.toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});}
 function uid(){return 'p'+Date.now()+Math.random().toString(36).slice(2,5);}
+function readingTime(body){const words=body.trim().split(/\s+/).length;const mins=Math.max(1,Math.round(words/200));return `${mins} min read`;}
 
-/* URL ROUTING */
-function getArticleUrl(id){return 'https://www.sigazette.com/article/'+id;}
-function showOnly(id){['home-view','article-view','admin-panel','search-view'].forEach(v=>document.getElementById(v).style.display='none');document.getElementById(id).style.display='block';}
-window.showHome=()=>{
-  history.pushState(null,'','https://www.sigazette.com/');
-  showOnly('home-view');
-  currentArticleId=null;
-  document.getElementById('search-input').value='';
-  document.title='Sigazette — Opinions and Discussions';
-  document.querySelector('meta[name="description"]').content='Sigazette is an independent publication covering sports, culture, and ideas.';
-  document.querySelector('meta[property="og:title"]').content='Sigazette — Opinions and Discussions';
-  document.querySelector('meta[property="og:url"]').content='https://www.sigazette.com/';
-  document.querySelector('meta[name="twitter:title"]').content='Sigazette — Opinions and Discussions';
-};
-window.showArticle=(id)=>{
-  currentArticleId=id;
-  history.pushState(null,'','https://www.sigazette.com/article/'+id);
-  showOnly('article-view');
-  renderArticle(id);
-  window.scrollTo(0,0);
-};
-function showAdmin(){showOnly('admin-panel');renderAdminList();}
+/* VIEWS */
+const VIEWS=['home-view','article-view','admin-panel','search-view','about-view'];
+function showOnly(id){VIEWS.forEach(v=>document.getElementById(v).style.display='none');document.getElementById(id).style.display='block';}
+window.showHome=()=>{history.pushState(null,'','https://www.sigazette.com/');showOnly('home-view');currentArticleId=null;document.getElementById('search-input').value='';document.title='Sigazette — Opinions and Discussions';};
+window.showAbout=()=>{history.pushState(null,'','https://www.sigazette.com/about');showOnly('about-view');renderAbout();document.title='About — Sigazette';window.scrollTo(0,0);};
+window.showArticle=(id)=>{currentArticleId=id;history.pushState(null,'','https://www.sigazette.com/article/'+id);showOnly('article-view');renderArticle(id);window.scrollTo(0,0);};
+function showAdmin(){showOnly('admin-panel');renderAdminList();loadAboutIntoEditor();}
 window.showSearch=(q)=>{
   showOnly('search-view');
   const r=articles.filter(a=>a.title.toLowerCase().includes(q.toLowerCase())||a.body.toLowerCase().includes(q.toLowerCase())||(a.tag||'').toLowerCase().includes(q.toLowerCase()));
@@ -425,29 +518,23 @@ let searchTimer;
 window.handleSearch=(v)=>{clearTimeout(searchTimer);if(!v.trim())return;searchTimer=setTimeout(()=>window.doSearch(),350);};
 window.doSearch=()=>{const q=document.getElementById('search-input').value.trim();if(q)window.showSearch(q);};
 
-/* Handle back/forward browser buttons */
 window.addEventListener('popstate',()=>checkUrl());
 function checkUrl(){
   const path=window.location.pathname;
   const hash=window.location.hash;
+  if(path==='/about'){window.showAbout();return;}
   let id=null;
-  if(path.startsWith('/article/')) id=path.replace('/article/','');
-  else if(hash.startsWith('#article-')) id=hash.replace('#article-','');
-  if(id){
-    const a=articles.find(x=>x.id===id);
-    if(a){currentArticleId=id;showOnly('article-view');renderArticle(id);window.scrollTo(0,0);return;}
-  }
+  if(path.startsWith('/article/'))id=path.replace('/article/','');
+  else if(hash.startsWith('#article-'))id=hash.replace('#article-','');
+  if(id){const a=articles.find(x=>x.id===id);if(a){currentArticleId=id;showOnly('article-view');renderArticle(id);window.scrollTo(0,0);return;}}
   showOnly('home-view');currentArticleId=null;
 }
 
 /* SHARE */
 window.shareArticle=async(id,title)=>{
-  const url=getArticleUrl(id);
+  const url='https://www.sigazette.com/article/'+id;
   const btn=document.getElementById('share-btn-'+id);
-  if(navigator.share){
-    try{await navigator.share({title,url,text:'Check out this article on Sigazette'});}catch(e){}
-    return;
-  }
+  if(navigator.share){try{await navigator.share({title,url,text:'Check out this article on Sigazette'});}catch(e){}return;}
   try{
     await navigator.clipboard.writeText(url);
     if(btn){btn.classList.add('copied');btn.innerHTML=shareIcon()+'Link copied!';setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML=shareIcon()+'Share';},2000);}
@@ -455,25 +542,87 @@ window.shareArticle=async(id,title)=>{
 };
 function shareIcon(){return `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="3" r="1.5"/><circle cx="4" cy="8" r="1.5"/><circle cx="12" cy="13" r="1.5"/><line x1="5.5" y1="8.8" x2="10.5" y2="12.2"/><line x1="10.5" y1="3.8" x2="5.5" y2="7.2"/></svg>`;}
 
-/* FIRESTORE */
+/* FIRESTORE — articles */
 const q=query(collection(db,'articles'),orderBy('date','desc'));
 onSnapshot(q,snap=>{
   articles=snap.docs.map(d=>({id:d.id,...d.data()}));
   renderHome();
   if(isAdmin)renderAdminList();
-  /* if URL has article path, open it once articles load */
-  if((window.location.pathname.startsWith('/article/')||window.location.hash.startsWith('#article-'))&&document.getElementById('article-view').style.display!=='block'){
-    checkUrl();
-  }
+  if((window.location.pathname.startsWith('/article/')||window.location.hash.startsWith('#article-'))&&document.getElementById('article-view').style.display!=='block'){checkUrl();}
 });
 
-function renderHome(){
-  renderFeatured(articles);
-  renderPostList(articles.slice(2));
-  renderSidebar(articles);
-  document.getElementById('home-empty').classList.toggle('hidden',articles.length>0);
+/* FIRESTORE — about */
+async function loadAboutData(){
+  try{const snap=await getDoc(doc(db,'settings','about'));if(snap.exists())aboutData=snap.data();}catch(e){}
 }
 
+/* ABOUT PAGE */
+function renderAbout(){
+  const photoEl=document.getElementById('about-photo-el');
+  if(aboutData.img){photoEl.innerHTML=`<img class="about-photo" src="${aboutData.img}" alt="Sigazette"/>`;}
+  else{photoEl.innerHTML=`<div class="about-photo-placeholder">📰</div>`;}
+  document.getElementById('about-subtitle-el').textContent=aboutData.subtitle||'Opinions and Discussions';
+  const socials=[];
+  if(aboutData.twitter)socials.push(`<a class="social-link" href="${aboutData.twitter}" target="_blank" rel="noopener">𝕏 Twitter</a>`);
+  if(aboutData.instagram)socials.push(`<a class="social-link" href="${aboutData.instagram}" target="_blank" rel="noopener">📸 Instagram</a>`);
+  if(aboutData.tiktok)socials.push(`<a class="social-link" href="${aboutData.tiktok}" target="_blank" rel="noopener">🎵 TikTok</a>`);
+  if(aboutData.email)socials.push(`<a class="social-link" href="${aboutData.email}">✉️ Email</a>`);
+  document.getElementById('about-socials-el').innerHTML=socials.join('');
+  const text=aboutData.text||'Welcome to Sigazette.';
+  document.getElementById('about-body-el').innerHTML=text.split(/\n\n+/).map(p=>`<p>${p.trim()}</p>`).join('');
+}
+
+function loadAboutIntoEditor(){
+  document.getElementById('about-subtitle').value=aboutData.subtitle||'';
+  document.getElementById('about-text').value=aboutData.text||'';
+  document.getElementById('about-twitter').value=aboutData.twitter||'';
+  document.getElementById('about-instagram').value=aboutData.instagram||'';
+  document.getElementById('about-tiktok').value=aboutData.tiktok||'';
+  document.getElementById('about-email').value=aboutData.email||'';
+  if(aboutData.img){const p=document.getElementById('about-img-preview');p.src=aboutData.img;p.style.display='block';}
+}
+
+window.switchAboutImgMode=(mode)=>{
+  aboutImgMode=mode;
+  document.getElementById('about-tb-upload').classList.toggle('active',mode==='upload');
+  document.getElementById('about-tb-url').classList.toggle('active',mode==='url');
+  document.getElementById('about-img-upload-zone').classList.toggle('hidden',mode==='url');
+  document.getElementById('about-img-url-zone').classList.toggle('hidden',mode==='upload');
+};
+window.previewAboutImg=(input)=>{const file=input.files[0];if(!file)return;const r=new FileReader();r.onload=e=>{const p=document.getElementById('about-img-preview');p.src=e.target.result;p.style.display='block';};r.readAsDataURL(file);};
+window.previewAboutImgUrl=(url)=>{const p=document.getElementById('about-img-preview');if(url){p.src=url;p.style.display='block';}else p.style.display='none';};
+
+window.saveAbout=async()=>{
+  const text=document.getElementById('about-text').value.trim();
+  if(!text){document.getElementById('about-err').style.display='block';return;}
+  document.getElementById('about-err').style.display='none';
+  const getImg=()=>new Promise(res=>{
+    if(aboutImgMode==='url'){res(document.getElementById('about-img-url').value.trim()||aboutData.img||null);return;}
+    const file=document.getElementById('about-img-file').files[0];
+    if(!file){res(aboutData.img||null);return;}
+    const r=new FileReader();r.onload=e=>res(e.target.result);r.readAsDataURL(file);
+  });
+  const img=await getImg();
+  aboutData={
+    text,
+    subtitle:document.getElementById('about-subtitle').value.trim(),
+    twitter:document.getElementById('about-twitter').value.trim(),
+    instagram:document.getElementById('about-instagram').value.trim(),
+    tiktok:document.getElementById('about-tiktok').value.trim(),
+    email:document.getElementById('about-email').value.trim(),
+    img:img||null
+  };
+  try{
+    await setDoc(doc(db,'settings','about'),aboutData);
+    alert('About page saved!');
+  }catch(e){alert('Error saving: '+e.message);}
+};
+
+/* HOME */
+function renderHome(){
+  renderFeatured(articles);renderPostList(articles.slice(2));renderSidebar(articles);
+  document.getElementById('home-empty').classList.toggle('hidden',articles.length>0);
+}
 function thumbHTML(a){
   if(a.img)return `<div class="post-thumb"><img src="${a.img}" alt="" onerror="this.style.display='none'"/></div>`;
   return `<div class="post-thumb"><span class="post-thumb-icon">📰</span></div>`;
@@ -483,8 +632,12 @@ function postCardHTML(a){
     <div>
       ${a.tag?`<div class="post-card-tag">${a.tag}</div>`:''}
       <div class="post-card-title">${a.title}</div>
-      <div class="post-card-excerpt">${a.excerpt||a.body.slice(0,130).replace(/\n/g,' ')}${a.body.length>130?'…':''}</div>
-      <div class="post-meta"><span>${a.author}</span><span class="post-meta-dot">·</span><span>${fmtDate(a.date)}</span><span class="read-more">Read</span></div>
+      <div class="post-card-excerpt">${a.excerpt||a.body.slice(0,120).replace(/\n/g,' ')}${a.body.length>120?'…':''}</div>
+      <div class="post-meta">
+        <span>${a.author}</span><span class="post-meta-dot">·</span><span>${fmtDate(a.date)}</span>
+        <span class="reading-time">${readingTime(a.body)}</span>
+        <span class="read-more">Read</span>
+      </div>
     </div>
     ${thumbHTML(a)}
   </div>`;
@@ -494,43 +647,62 @@ function renderFeatured(sorted){
   if(!sorted.length){el.innerHTML='';return;}
   const[hero,...rest]=sorted;
   const imgHTML=hero.img?`<img src="${hero.img}" alt="" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"/>`:`<span style="font-size:3rem;opacity:.2;">📰</span>`;
-  const smalls=rest.slice(0,2).map(a=>`<div class="feat-small" onclick="showArticle('${a.id}')">${a.img?`<img class="feat-small-img" src="${a.img}" alt="" onerror="this.style.display='none'"/>`:`<div class="feat-small-img-placeholder">📰</div>`}<div class="feat-small-body"><div class="feat-tag">${a.tag||''}</div><h3>${a.title}</h3><p>${a.excerpt||a.body.slice(0,80).replace(/\n/g,' ')}…</p></div></div>`).join('');
-  el.innerHTML=`<div class="section-label">Featured</div><div class="featured-grid"><div class="feat-hero" onclick="showArticle('${hero.id}')" style="cursor:pointer;"><div class="feat-hero-img">${imgHTML}</div><div class="feat-hero-body"><div class="feat-tag">${hero.tag||''}</div><h2>${hero.title}</h2><p>${hero.excerpt||hero.body.slice(0,170).replace(/\n/g,' ')}${hero.body.length>170?'…':''}</p><div class="post-meta"><span>${hero.author}</span><span class="post-meta-dot">·</span><span>${fmtDate(hero.date)}</span></div></div></div>${smalls?`<div class="feat-smalls">${smalls}</div>`:''}</div>`;
+  const smalls=rest.slice(0,2).map(a=>`
+    <div class="feat-small" onclick="showArticle('${a.id}')">
+      ${a.img?`<img class="feat-small-img" src="${a.img}" alt="" onerror="this.style.display='none'"/>`:`<div class="feat-small-img-placeholder">📰</div>`}
+      <div class="feat-small-body">
+        <div class="feat-tag">${a.tag||''}</div>
+        <h3>${a.title}</h3>
+        <p>${a.excerpt||a.body.slice(0,70).replace(/\n/g,' ')}…</p>
+      </div>
+    </div>`).join('');
+  el.innerHTML=`
+    <div class="section-label">Featured</div>
+    <div class="featured-grid">
+      <div class="feat-hero" onclick="showArticle('${hero.id}')" style="cursor:pointer;">
+        <div class="feat-hero-img">${imgHTML}</div>
+        <div class="feat-hero-body">
+          <div class="feat-tag">${hero.tag||''}</div>
+          <h2>${hero.title}</h2>
+          <p>${hero.excerpt||hero.body.slice(0,160).replace(/\n/g,' ')}${hero.body.length>160?'…':''}</p>
+          <div class="post-meta">
+            <span>${hero.author}</span><span class="post-meta-dot">·</span><span>${fmtDate(hero.date)}</span>
+            <span class="reading-time">${readingTime(hero.body)}</span>
+          </div>
+        </div>
+      </div>
+      ${smalls?`<div class="feat-smalls">${smalls}</div>`:''}
+    </div>`;
 }
-function renderPostList(posts){document.getElementById('post-list').innerHTML=posts.length?posts.map(postCardHTML).join(''):'';}
+function renderPostList(posts){document.getElementById('post-list').innerHTML=posts.length?posts.map(postCardHTML).join(''):''; }
 function renderSidebar(sorted){
   document.getElementById('popular-list').innerHTML=sorted.slice(0,5).map((a,i)=>`<li onclick="showArticle('${a.id}')"><span class="pop-num">0${i+1}</span><span class="pop-title">${a.title}</span></li>`).join('');
   const tags=[...new Set(articles.map(a=>a.tag).filter(Boolean))];
   document.getElementById('tag-cloud').innerHTML=tags.map(t=>`<span class="tag" onclick="showSearch('${t}')">${t}</span>`).join('');
 }
 
+/* ARTICLE */
 function linkify(t){return t.replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');}
 function renderArticle(id){
   const a=articles.find(x=>x.id===id);
   if(!a){window.showHome();return;}
   document.title=a.title+' — Sigazette';
-  // update meta tags for this article
   const desc=a.excerpt||a.body.slice(0,160).replace(/\n/g,' ');
   document.querySelector('meta[name="description"]').content=desc;
   document.querySelector('meta[property="og:title"]').content=a.title+' — Sigazette';
   document.querySelector('meta[property="og:description"]').content=desc;
-  document.querySelector('meta[property="og:url"]').content='https://www.sigazette.com/#article-'+id;
+  document.querySelector('meta[property="og:url"]').content='https://www.sigazette.com/article/'+id;
   document.querySelector('meta[name="twitter:title"]').content=a.title+' — Sigazette';
   document.querySelector('meta[name="twitter:description"]').content=desc;
-  if(a.img){
-    document.querySelector('meta[property="og:image"]').content=a.img;
-    document.querySelector('meta[name="twitter:image"]').content=a.img;
-  }
-  // article structured data
+  if(a.img){document.querySelector('meta[property="og:image"]').content=a.img;document.querySelector('meta[name="twitter:image"]').content=a.img;}
   let sd=document.getElementById('article-sd');
   if(!sd){sd=document.createElement('script');sd.type='application/ld+json';sd.id='article-sd';document.head.appendChild(sd);}
-  sd.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article","headline":a.title,"description":desc,"author":{"@type":"Person","name":a.author},"publisher":{"@type":"Organization","name":"Sigazette","url":"https://www.sigazette.com"},"url":"https://www.sigazette.com/#article-"+id,"image":a.img||""});
+  sd.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article","headline":a.title,"description":desc,"author":{"@type":"Person","name":a.author},"publisher":{"@type":"Organization","name":"Sigazette","url":"https://www.sigazette.com"},"url":"https://www.sigazette.com/article/"+id,"image":a.img||""});
   document.getElementById('av-tag').textContent=a.tag||'';
   document.getElementById('av-title').textContent=a.title;
   document.getElementById('av-meta').innerHTML=`
-    <span>By ${a.author}</span>
-    <span class="post-meta-dot">·</span>
-    <span>${fmtDate(a.date)}</span>
+    <span>By ${a.author}</span><span class="post-meta-dot">·</span><span>${fmtDate(a.date)}</span>
+    <span class="reading-time">${readingTime(a.body)}</span>
     <button class="share-btn" id="share-btn-${id}" onclick="shareArticle('${id}','${a.title.replace(/'/g,"\\'")}')">
       ${shareIcon()}Share
     </button>`;
@@ -552,7 +724,23 @@ function renderArticle(id){
     if(ph.caption)html+=`<p class="inline-caption">${ph.caption}</p>`;
   });
   document.getElementById('av-body').innerHTML=html;
+  renderRelated(id,a.tag);
   loadComments(id);
+}
+
+function renderRelated(currentId,tag){
+  const el=document.getElementById('related-section');
+  let related=articles.filter(a=>a.id!==currentId&&a.tag===tag).slice(0,3);
+  if(related.length<3){const others=articles.filter(a=>a.id!==currentId&&a.tag!==tag).slice(0,3-related.length);related=[...related,...others];}
+  if(!related.length){el.innerHTML='';return;}
+  el.innerHTML=`<div class="section-label">More from Sigazette</div><div class="related-grid">${related.map(a=>`
+    <div class="related-card" onclick="showArticle('${a.id}');window.scrollTo(0,0);">
+      ${a.img?`<img class="related-card-img" src="${a.img}" alt="" onerror="this.className='related-card-img-placeholder'"/>`:`<div class="related-card-img-placeholder">📰</div>`}
+      <div class="related-card-body">
+        ${a.tag?`<div class="related-card-tag">${a.tag}</div>`:''}
+        <div class="related-card-title">${a.title}</div>
+      </div>
+    </div>`).join('')}</div>`;
 }
 
 async function loadComments(articleId){
@@ -567,12 +755,11 @@ window.submitComment=async()=>{
   const text=document.getElementById('c-text').value.trim();
   if(!name||!text){alert('Please enter your name and a comment.');return;}
   await addDoc(collection(db,'articles',currentArticleId,'comments'),{name,text,date:serverTimestamp()});
-  document.getElementById('c-name').value='';
-  document.getElementById('c-email').value='';
-  document.getElementById('c-text').value='';
+  document.getElementById('c-name').value='';document.getElementById('c-email').value='';document.getElementById('c-text').value='';
   loadComments(currentArticleId);
 };
 
+/* ADMIN */
 window.handleAdminBtn=()=>{if(isAdmin)showAdmin();else document.getElementById('login-modal').classList.add('open');};
 window.closeLogin=()=>{document.getElementById('login-modal').classList.remove('open');document.getElementById('login-err').style.display='none';};
 window.doLogin=()=>{
@@ -606,7 +793,6 @@ function renderInlinePhotoList(){
     return `<div class="ipr">${thumb}<div class="ipr-meta"><select onchange="updateInlinePos('${ph.id}',this.value)">${opts}</select><input type="text" placeholder="Caption (optional)" value="${ph.caption||''}" oninput="updateInlineCaption('${ph.id}',this.value)"/><div class="ipr-files"><input type="file" accept="image/*" onchange="loadInlineFile('${ph.id}',this)"/><input type="url" placeholder="or paste URL" oninput="updateInlineUrl('${ph.id}',this.value)"/></div></div><button class="btn-remove" onclick="removeInlinePhoto('${ph.id}')">×</button></div>`;
   }).join('');
 }
-
 window.saveArticle=async()=>{
   const title=document.getElementById('e-title').value.trim();
   const author=document.getElementById('e-author').value.trim();
@@ -614,7 +800,7 @@ window.saveArticle=async()=>{
   const errEl=document.getElementById('editor-err');
   if(!title||!author||!body){errEl.style.display='block';return;}
   errEl.style.display='none';
-  const btn=document.querySelector('.editor-actions .btn-primary');
+  const btn=document.querySelector('#admin-panel .editor-actions .btn-primary');
   btn.textContent='Publishing...';btn.disabled=true;
   getCoverImg(async img=>{
     const tag=document.getElementById('e-tag').value.trim();
@@ -638,7 +824,8 @@ function renderAdminList(){
   el.innerHTML=articles.map(a=>`<div class="admin-article-row"><div><div class="row-title">${a.title}</div><div class="row-meta">${a.author} · ${fmtDate(a.date)}${a.tag?' · '+a.tag:''}${(a.inlinePhotos||[]).length?' · '+(a.inlinePhotos||[]).length+' inline photo(s)':''}</div></div><div class="row-actions"><button class="btn-ghost" onclick="editArticle('${a.id}')">Edit</button><button class="btn-danger" onclick="deleteArticle('${a.id}')">Delete</button></div></div>`).join('');
 }
 
-/* Check URL on load */
+/* INIT */
+loadAboutData();
 showOnly('home-view');
 checkUrl();
 </script>
