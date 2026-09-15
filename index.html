@@ -522,9 +522,11 @@ window.addEventListener('popstate',()=>checkUrl());
 function checkUrl(){
   const path=window.location.pathname;
   const hash=window.location.hash;
+  const params=new URLSearchParams(window.location.search);
   if(path==='/about'){window.showAbout();return;}
   let id=null;
-  if(path.startsWith('/article/'))id=path.replace('/article/','');
+  if(params.get('article'))id=params.get('article');
+  else if(path.startsWith('/article/'))id=path.replace('/article/','');
   else if(hash.startsWith('#article-'))id=hash.replace('#article-','');
   if(id){const a=articles.find(x=>x.id===id);if(a){currentArticleId=id;showOnly('article-view');renderArticle(id);window.scrollTo(0,0);return;}}
   showOnly('home-view');currentArticleId=null;
@@ -548,7 +550,7 @@ onSnapshot(q,snap=>{
   articles=snap.docs.map(d=>({id:d.id,...d.data()}));
   renderHome();
   if(isAdmin)renderAdminList();
-  if((window.location.pathname.startsWith('/article/')||window.location.hash.startsWith('#article-'))&&document.getElementById('article-view').style.display!=='block'){checkUrl();}
+  if((window.location.pathname.startsWith('/article/')||window.location.hash.startsWith('#article-')||new URLSearchParams(window.location.search).get('article'))&&document.getElementById('article-view').style.display!=='block'){checkUrl();}
 });
 
 /* FIRESTORE — about */
