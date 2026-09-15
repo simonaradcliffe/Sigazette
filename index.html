@@ -829,7 +829,16 @@ function renderAdminList(){
 /* INIT */
 loadAboutData();
 showOnly('home-view');
-checkUrl();
+// Check for article ID injected by Cloudflare Worker
+if(window.__ARTICLE_ID__){
+  const waitForArticles=setInterval(()=>{
+    const a=articles.find(x=>x.id===window.__ARTICLE_ID__);
+    if(a){clearInterval(waitForArticles);currentArticleId=a.id;showOnly('article-view');renderArticle(a.id);window.scrollTo(0,0);}
+  },100);
+  setTimeout(()=>clearInterval(waitForArticles),5000);
+} else {
+  checkUrl();
+}
 </script>
 </body>
 </html>
