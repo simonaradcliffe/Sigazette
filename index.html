@@ -477,7 +477,7 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
 
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { initializeFirestore, memoryLocalCache, collection, addDoc, getDocs, doc, deleteDoc, updateDoc, setDoc, getDoc, query, orderBy, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { initializeFirestore, memoryLocalCache, collection, addDoc, getDocs, doc, deleteDoc, updateDoc, setDoc, getDoc, query, orderBy, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig={
   apiKey:"AIzaSyAaVwL4Jn6YQ66qbMZqIEIgbSWNyOze2P0",
@@ -545,13 +545,18 @@ window.shareArticle=async(id,title)=>{
 function shareIcon(){return `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="3" r="1.5"/><circle cx="4" cy="8" r="1.5"/><circle cx="12" cy="13" r="1.5"/><line x1="5.5" y1="8.8" x2="10.5" y2="12.2"/><line x1="10.5" y1="3.8" x2="5.5" y2="7.2"/></svg>`;}
 
 /* FIRESTORE — articles */
-const q=query(collection(db,'articles'),orderBy('date','desc'));
-onSnapshot(q,snap=>{
-  articles=snap.docs.map(d=>({id:d.id,...d.data()}));
-  renderHome();
-  if(isAdmin)renderAdminList();
-  if((window.location.pathname.startsWith('/article/')||window.location.hash.startsWith('#article-')||new URLSearchParams(window.location.search).get('article'))&&document.getElementById('article-view').style.display!=='block'){checkUrl();}
-});
+async function loadArticles(){
+  try{
+    const snap=await getDocs(query(collection(db,'articles'),orderBy('date','desc')));
+    articles=snap.docs.map(d=>({id:d.id,...d.data()}));
+    renderHome();
+    if(isAdmin)renderAdminList();
+    if((window.location.pathname.startsWith('/article/')||window.location.hash.startsWith('#article-')||new URLSearchParams(window.location.search).get('article'))&&document.getElementById('article-view').style.display!=='block'){checkUrl();}
+  }catch(e){
+    document.getElementById('post-list').innerHTML='<p style="color:var(--muted);padding:2rem;font-size:14px;">Unable to load articles. Please try refreshing.</p>';
+  }
+}
+loadArticles();
 
 /* FIRESTORE — about */
 async function loadAboutData(){
@@ -812,6 +817,7 @@ window.saveArticle=async()=>{
       if(editingId){const updates={title,author,body,tag,excerpt,inlinePhotos:photos};if(img)updates.img=img;await updateDoc(doc(db,'articles',editingId),updates);}
       else{await addDoc(collection(db,'articles'),{title,author,body,tag,excerpt,img:img||null,inlinePhotos:photos,date:serverTimestamp()});}
       resetEditor();
+      loadArticles();
     }catch(e){alert('Error saving: '+e.message);}
     btn.textContent='Publish article';btn.disabled=false;
   });
@@ -819,7 +825,7 @@ window.saveArticle=async()=>{
 function resetEditor(){['e-title','e-author','e-body','e-tag','e-excerpt','e-img-url'].forEach(id=>document.getElementById(id).value='');document.getElementById('e-img-file').value='';document.getElementById('img-preview').style.display='none';document.getElementById('editor-heading').textContent='New Article';document.getElementById('cancel-edit-btn').style.display='none';editingId=null;inlinePhotos=[];renderInlinePhotoList();}
 window.cancelEdit=()=>resetEditor();
 window.editArticle=(id)=>{const a=articles.find(x=>x.id===id);document.getElementById('e-title').value=a.title;document.getElementById('e-author').value=a.author;document.getElementById('e-body').value=a.body;document.getElementById('e-tag').value=a.tag||'';document.getElementById('e-excerpt').value=a.excerpt||'';if(a.img){document.getElementById('img-preview').src=a.img;document.getElementById('img-preview').style.display='block';}inlinePhotos=(a.inlinePhotos||[]).map(p=>({...p}));renderInlinePhotoList();document.getElementById('editor-heading').textContent='Edit Article';document.getElementById('cancel-edit-btn').style.display='inline-flex';editingId=id;window.scrollTo({top:0,behavior:'smooth'});};
-window.deleteArticle=async(id)=>{if(!confirm('Delete this article? This cannot be undone.'))return;await deleteDoc(doc(db,'articles',id));if(editingId===id)resetEditor();};
+window.deleteArticle=async(id)=>{if(!confirm('Delete this article? This cannot be undone.'))return;await deleteDoc(doc(db,'articles',id));if(editingId===id)resetEditor();loadArticles();};
 function renderAdminList(){
   const el=document.getElementById('admin-article-list');
   if(!articles.length){el.innerHTML='<div class="empty-state"><p>No articles yet. Write your first one above!</p></div>';return;}
