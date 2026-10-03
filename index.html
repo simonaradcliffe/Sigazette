@@ -478,6 +478,7 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { initializeFirestore, memoryLocalCache, collection, addDoc, getDocs, doc, deleteDoc, updateDoc, setDoc, getDoc, query, orderBy, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getAuth, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 
 const firebaseConfig={
   apiKey:"AIzaSyAaVwL4Jn6YQ66qbMZqIEIgbSWNyOze2P0",
@@ -489,9 +490,8 @@ const firebaseConfig={
 };
 const app=initializeApp(firebaseConfig);
 const db=initializeFirestore(app,{localCache:memoryLocalCache()});
+const auth=getAuth(app);
 
-const ADMIN_EMAIL='admin@sigazette.com';
-const ADMIN_PW='sigazette2026';
 let articles=[],isAdmin=false,editingId=null,currentArticleId=null,imgMode='upload',inlinePhotos=[],aboutImgMode='upload',aboutData={};
 
 const AVATARS=['#5a87a0','#8a6fa5','#1a3c2e','#c0392b','#d4813a','#3a6e9e'];
@@ -769,13 +769,29 @@ window.submitComment=async()=>{
 /* ADMIN */
 window.handleAdminBtn=()=>{if(isAdmin)showAdmin();else document.getElementById('login-modal').classList.add('open');};
 window.closeLogin=()=>{document.getElementById('login-modal').classList.remove('open');document.getElementById('login-err').style.display='none';};
-window.doLogin=()=>{
+window.doLogin=async()=>{
   const em=document.getElementById('login-email').value.trim();
   const pw=document.getElementById('login-pw').value;
-  if(em===ADMIN_EMAIL&&pw===ADMIN_PW){isAdmin=true;window.closeLogin();document.getElementById('admin-btn').classList.add('active');document.getElementById('admin-btn').textContent='Dashboard';showAdmin();}
-  else document.getElementById('login-err').style.display='block';
+  const errEl=document.getElementById('login-err');
+  errEl.style.display='none';
+  try{
+    await signInWithEmailAndPassword(auth,em,pw);
+    isAdmin=true;
+    window.closeLogin();
+    document.getElementById('admin-btn').classList.add('active');
+    document.getElementById('admin-btn').textContent='Dashboard';
+    showAdmin();
+  }catch(e){
+    errEl.style.display='block';
+  }
 };
-window.logout=()=>{isAdmin=false;editingId=null;document.getElementById('admin-btn').classList.remove('active');document.getElementById('admin-btn').textContent='Admin';window.showHome();};
+window.logout=async()=>{
+  await signOut(auth);
+  isAdmin=false;editingId=null;
+  document.getElementById('admin-btn').classList.remove('active');
+  document.getElementById('admin-btn').textContent='Admin';
+  window.showHome();
+};
 
 window.switchImgMode=(mode)=>{imgMode=mode;document.getElementById('tb-upload').classList.toggle('active',mode==='upload');document.getElementById('tb-url').classList.toggle('active',mode==='url');document.getElementById('img-upload-zone').classList.toggle('hidden',mode==='url');document.getElementById('img-url-zone').classList.toggle('hidden',mode==='upload');document.getElementById('img-preview').style.display='none';};
 window.previewCover=(input)=>{const file=input.files[0];if(!file)return;const r=new FileReader();r.onload=e=>{const p=document.getElementById('img-preview');p.src=e.target.result;p.style.display='block';};r.readAsDataURL(file);};
