@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +8,7 @@
 <meta name="keywords" content="sigazette, sports, NFL, NBA, NHL, MLB, culture, essays, articles, blog, Vancouver"/>
 <meta name="author" content="Sigazette"/>
 <link rel="canonical" href="https://www.sigazette.com/"/>
+<meta name="robots" content="index,follow,max-image-preview:large"/>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a3c2e'/%3E%3Ctext x='16' y='24' font-family='Georgia,serif' font-size='22' font-weight='700' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Sigazette"/>
@@ -17,13 +17,16 @@
 <meta property="og:url" content="https://www.sigazette.com/"/>
 <meta property="og:image" content="https://www.sigazette.com/og-image.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:site" content="@sigazette"/>
+<meta name="twitter:site" content="@theSigazetteMag"/>
 <meta name="twitter:title" content="Sigazette — Opinions and Discussions"/>
 <meta name="twitter:description" content="Sigazette is a Vancouver-based independent sports publication with in-depth analysis, trade breakdowns, and opinion pieces."/>
 <meta name="twitter:image" content="https://www.sigazette.com/og-image.jpg"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Sigazette","url":"https://www.sigazette.com","description":"Sigazette is a Vancouver-based independent sports publication."}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QRGD2EPR7Y"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QRGD2EPR7Y');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://firestore.googleapis.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -168,7 +171,8 @@ aside{position:sticky;top:72px;}
 .c-date{font-size:11px;color:var(--muted);margin-left:.5rem;}
 .c-text{font-size:14px;color:var(--muted);line-height:1.65;}
 .comment-form{margin-top:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.25rem;}
-.comment-form h4{font-family:var(--serif);font-size:1rem;font-weight:700;margin-bottom:1rem;}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.comment-form h2{font-family:var(--serif);font-size:1rem;font-weight:700;margin-bottom:1rem;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:.65rem;}
 .inp{width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s;}
 .inp:focus{border-color:var(--accent);}
@@ -281,12 +285,12 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
 
 <nav>
   <div class="nav-top">
-    <a class="nav-logo" href="#" onclick="showHome()">Siga<span>zette</span></a>
+    <a class="nav-logo" href="/" onclick="return navTo(event,'home')">Siga<span>zette</span></a>
     <div class="nav-right">
       <ul class="nav-links">
-        <li><a onclick="showHome()">Home</a></li>
-        <li><a onclick="showAbout()">About</a></li>
-        <li><a onclick="showHome()">Archive</a></li>
+        <li><a href="/" onclick="return navTo(event,'home')">Home</a></li>
+        <li><a href="/about" onclick="return navTo(event,'about')">About</a></li>
+        <li><a href="/" onclick="return navTo(event,'home')">Archive</a></li>
       </ul>
       <input class="nav-search" type="text" placeholder="Search..." id="search-input" oninput="handleSearch(this.value)" onkeydown="if(event.key==='Enter')doSearch()"/>
       <button class="btn-admin" id="admin-btn" onclick="handleAdminBtn()">Admin</button>
@@ -311,6 +315,7 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
 
 <!-- HOME -->
 <div id="home-view">
+  <h1 class="sr-only">Sigazette — independent sports opinion and analysis from Vancouver</h1>
   <div class="page">
     <main>
       <div id="featured-section"></div>
@@ -361,7 +366,7 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
     <div class="section-label">Comments</div>
     <div id="comments-list"></div>
     <div class="comment-form">
-      <h4>Leave a comment</h4>
+      <h2>Leave a comment</h2>
       <div class="form-row">
         <input class="inp" type="text" id="c-name" placeholder="Your name"/>
         <input class="inp" type="email" id="c-email" placeholder="Email (not shown)"/>
@@ -467,9 +472,9 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
 <footer>
   <div class="footer-logo">Siga<span>zette</span></div>
   <ul class="footer-links">
-    <li><a onclick="showHome()">Home</a></li>
-    <li><a onclick="showAbout()">About</a></li>
-    <li><a onclick="showHome()">Archive</a></li>
+    <li><a href="/" onclick="return navTo(event,'home')">Home</a></li>
+    <li><a href="/about" onclick="return navTo(event,'about')">About</a></li>
+    <li><a href="/" onclick="return navTo(event,'home')">Archive</a></li>
     <li><a>Advertise</a></li>
   </ul>
   <p class="footer-copy">© 2026 Sigazette. All rights reserved.</p>
@@ -499,13 +504,18 @@ function colorFor(n){let h=0;for(let c of n)h=c.charCodeAt(0)+((h<<5)-h);return 
 function initials(n){return n.trim().split(' ').map(w=>w[0]||'').join('').toUpperCase().slice(0,2)||'?';}
 function fmtDate(ts){if(!ts)return '';const d=ts.toDate?ts.toDate():new Date(ts);return d.toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});}
 function uid(){return 'p'+Date.now()+Math.random().toString(36).slice(2,5);}
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function setCanonical(u){const l=document.querySelector('link[rel="canonical"]');if(l)l.href=u;}
+const modClick=e=>e&&(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button>0);
+window.navTo=(e,where)=>{if(modClick(e))return true;if(e)e.preventDefault();if(where==='about')window.showAbout();else window.showHome();return false;};
+window.navArticle=(e,id)=>{if(modClick(e))return true;if(e){e.preventDefault();e.stopPropagation();}window.showArticle(id);window.scrollTo(0,0);return false;};
 function readingTime(body){const words=body.trim().split(/\s+/).length;const mins=Math.max(1,Math.round(words/200));return `${mins} min read`;}
 
 /* VIEWS */
 const VIEWS=['home-view','article-view','admin-panel','search-view','about-view'];
 function showOnly(id){VIEWS.forEach(v=>document.getElementById(v).style.display='none');document.getElementById(id).style.display='block';}
-window.showHome=()=>{history.pushState(null,'','https://www.sigazette.com/');showOnly('home-view');currentArticleId=null;document.getElementById('search-input').value='';document.title='Sigazette — Opinions and Discussions';};
-window.showAbout=()=>{history.pushState(null,'','https://www.sigazette.com/about');showOnly('about-view');renderAbout();document.title='About — Sigazette';window.scrollTo(0,0);};
+window.showHome=()=>{history.pushState(null,'','https://www.sigazette.com/');showOnly('home-view');currentArticleId=null;document.getElementById('search-input').value='';document.title='Sigazette — Opinions and Discussions';setCanonical('https://www.sigazette.com/');};
+window.showAbout=()=>{history.pushState(null,'','https://www.sigazette.com/about');showOnly('about-view');renderAbout();document.title='About — Sigazette';setCanonical('https://www.sigazette.com/about');window.scrollTo(0,0);};
 window.showArticle=(id)=>{currentArticleId=id;history.pushState(null,'','https://www.sigazette.com/article/'+id);showOnly('article-view');renderArticle(id);window.scrollTo(0,0);};
 function showAdmin(){showOnly('admin-panel');renderAdminList();loadAboutIntoEditor();}
 window.showSearch=(q)=>{
@@ -631,14 +641,14 @@ function renderHome(){
   document.getElementById('home-empty').classList.toggle('hidden',articles.length>0);
 }
 function thumbHTML(a){
-  if(a.img)return `<div class="post-thumb"><img src="${a.img}" alt="" onerror="this.style.display='none'"/></div>`;
+  if(a.img)return `<div class="post-thumb"><img src="${a.img}" alt="${esc(a.title)}" loading="lazy" decoding="async" onerror="this.style.display='none'"/></div>`;
   return `<div class="post-thumb"><span class="post-thumb-icon">📰</span></div>`;
 }
 function postCardHTML(a){
   return `<div class="post-card" onclick="showArticle('${a.id}')">
     <div>
       ${a.tag?`<div class="post-card-tag">${a.tag}</div>`:''}
-      <div class="post-card-title">${a.title}</div>
+      <div class="post-card-title"><a href="/article/${a.id}" onclick="return navArticle(event,'${a.id}')">${a.title}</a></div>
       <div class="post-card-excerpt">${a.excerpt||a.body.slice(0,120).replace(/\n/g,' ')}${a.body.length>120?'…':''}</div>
       <div class="post-meta">
         <span>${a.author}</span><span class="post-meta-dot">·</span><span>${fmtDate(a.date)}</span>
@@ -653,13 +663,13 @@ function renderFeatured(sorted){
   const el=document.getElementById('featured-section');
   if(!sorted.length){el.innerHTML='';return;}
   const[hero,...rest]=sorted;
-  const imgHTML=hero.img?`<img src="${hero.img}" alt="" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"/>`:`<span style="font-size:3rem;opacity:.2;">📰</span>`;
+  const imgHTML=hero.img?`<img src="${hero.img}" alt="${esc(hero.title)}" fetchpriority="high" decoding="async" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"/>`:`<span style="font-size:3rem;opacity:.2;">📰</span>`;
   const smalls=rest.slice(0,2).map(a=>`
     <div class="feat-small" onclick="showArticle('${a.id}')">
-      ${a.img?`<img class="feat-small-img" src="${a.img}" alt="" onerror="this.style.display='none'"/>`:`<div class="feat-small-img-placeholder">📰</div>`}
+      ${a.img?`<img class="feat-small-img" src="${a.img}" alt="${esc(a.title)}" loading="lazy" decoding="async" onerror="this.style.display='none'"/>`:`<div class="feat-small-img-placeholder">📰</div>`}
       <div class="feat-small-body">
         <div class="feat-tag">${a.tag||''}</div>
-        <h3>${a.title}</h3>
+        <h3><a href="/article/${a.id}" onclick="return navArticle(event,'${a.id}')">${a.title}</a></h3>
         <p>${a.excerpt||a.body.slice(0,70).replace(/\n/g,' ')}…</p>
       </div>
     </div>`).join('');
@@ -670,7 +680,7 @@ function renderFeatured(sorted){
         <div class="feat-hero-img">${imgHTML}</div>
         <div class="feat-hero-body">
           <div class="feat-tag">${hero.tag||''}</div>
-          <h2>${hero.title}</h2>
+          <h2><a href="/article/${hero.id}" onclick="return navArticle(event,'${hero.id}')">${hero.title}</a></h2>
           <p>${hero.excerpt||hero.body.slice(0,160).replace(/\n/g,' ')}${hero.body.length>160?'…':''}</p>
           <div class="post-meta">
             <span>${hero.author}</span><span class="post-meta-dot">·</span><span>${fmtDate(hero.date)}</span>
@@ -683,7 +693,7 @@ function renderFeatured(sorted){
 }
 function renderPostList(posts){document.getElementById('post-list').innerHTML=posts.length?posts.map(postCardHTML).join(''):''; }
 function renderSidebar(sorted){
-  document.getElementById('popular-list').innerHTML=sorted.slice(0,5).map((a,i)=>`<li onclick="showArticle('${a.id}')"><span class="pop-num">0${i+1}</span><span class="pop-title">${a.title}</span></li>`).join('');
+  document.getElementById('popular-list').innerHTML=sorted.slice(0,5).map((a,i)=>`<li onclick="showArticle('${a.id}')"><span class="pop-num">0${i+1}</span><a class="pop-title" href="/article/${a.id}" onclick="return navArticle(event,'${a.id}')">${a.title}</a></li>`).join('');
   const tags=[...new Set(articles.map(a=>a.tag).filter(Boolean))];
   document.getElementById('tag-cloud').innerHTML=tags.map(t=>`<span class="tag" onclick="showSearch('${t}')">${t}</span>`).join('');
 }
@@ -702,9 +712,13 @@ function renderArticle(id){
   document.querySelector('meta[name="twitter:title"]').content=a.title+' — Sigazette';
   document.querySelector('meta[name="twitter:description"]').content=desc;
   if(a.img){document.querySelector('meta[property="og:image"]').content=a.img;document.querySelector('meta[name="twitter:image"]').content=a.img;}
+  const pub=a.date?(a.date.toDate?a.date.toDate():new Date(a.date)).toISOString():'';
+  const artUrl='https://www.sigazette.com/article/'+id;
+  setCanonical(artUrl);
+  const ot=document.querySelector('meta[property="og:type"]');if(ot)ot.content='article';
   let sd=document.getElementById('article-sd');
   if(!sd){sd=document.createElement('script');sd.type='application/ld+json';sd.id='article-sd';document.head.appendChild(sd);}
-  sd.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article","headline":a.title,"description":desc,"author":{"@type":"Person","name":a.author},"publisher":{"@type":"Organization","name":"Sigazette","url":"https://www.sigazette.com"},"url":"https://www.sigazette.com/article/"+id,"image":a.img||""});
+  sd.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article","headline":a.title,"description":desc,"author":{"@type":"Person","name":a.author},"publisher":{"@type":"Organization","name":"Sigazette","url":"https://www.sigazette.com"},"url":artUrl,"mainEntityOfPage":{"@type":"WebPage","@id":artUrl},"image":(a.img&&/^https:/.test(a.img))?a.img:"https://www.sigazette.com/og-image.jpg",...(pub?{"datePublished":pub,"dateModified":pub}:{})});
   document.getElementById('av-tag').textContent=a.tag||'';
   document.getElementById('av-title').textContent=a.title;
   document.getElementById('av-meta').innerHTML=`
@@ -714,7 +728,7 @@ function renderArticle(id){
       ${shareIcon()}Share
     </button>`;
   const imgEl=document.getElementById('av-img');
-  if(a.img){imgEl.src=a.img;imgEl.style.display='block';imgEl.onerror=()=>imgEl.style.display='none';}
+  if(a.img){imgEl.src=a.img;imgEl.alt=a.title;imgEl.style.display='block';imgEl.onerror=()=>imgEl.style.display='none';}
   else imgEl.style.display='none';
   const paras=a.body.split(/\n\n+/);
   const inlines=a.inlinePhotos||[];
@@ -722,12 +736,12 @@ function renderArticle(id){
   paras.forEach((p,i)=>{
     html+=`<p>${linkify(p.trim())}</p>`;
     inlines.filter(ph=>ph.position===`after-para-${i}`).forEach(ph=>{
-      html+=`<img class="inline-img" src="${ph.img}" alt="" onerror="this.style.display='none'"/>`;
+      html+=`<img class="inline-img" src="${ph.img}" alt="${esc(ph.caption||a.title)}" loading="lazy" decoding="async" onerror="this.style.display='none'"/>`;
       if(ph.caption)html+=`<p class="inline-caption">${ph.caption}</p>`;
     });
   });
   inlines.filter(ph=>ph.position==='end').forEach(ph=>{
-    html+=`<img class="inline-img" src="${ph.img}" alt="" onerror="this.style.display='none'"/>`;
+    html+=`<img class="inline-img" src="${ph.img}" alt="${esc(ph.caption||a.title)}" loading="lazy" decoding="async" onerror="this.style.display='none'"/>`;
     if(ph.caption)html+=`<p class="inline-caption">${ph.caption}</p>`;
   });
   document.getElementById('av-body').innerHTML=html;
@@ -742,10 +756,10 @@ function renderRelated(currentId,tag){
   if(!related.length){el.innerHTML='';return;}
   el.innerHTML=`<div class="section-label">More from Sigazette</div><div class="related-grid">${related.map(a=>`
     <div class="related-card" onclick="showArticle('${a.id}');window.scrollTo(0,0);">
-      ${a.img?`<img class="related-card-img" src="${a.img}" alt="" onerror="this.className='related-card-img-placeholder'"/>`:`<div class="related-card-img-placeholder">📰</div>`}
+      ${a.img?`<img class="related-card-img" src="${a.img}" alt="${esc(a.title)}" loading="lazy" decoding="async" onerror="this.className='related-card-img-placeholder'"/>`:`<div class="related-card-img-placeholder">📰</div>`}
       <div class="related-card-body">
         ${a.tag?`<div class="related-card-tag">${a.tag}</div>`:''}
-        <div class="related-card-title">${a.title}</div>
+        <div class="related-card-title"><a href="/article/${a.id}" onclick="return navArticle(event,'${a.id}')">${a.title}</a></div>
       </div>
     </div>`).join('')}</div>`;
 }
@@ -755,7 +769,7 @@ async function loadComments(articleId){
   el.innerHTML='<div class="loading">Loading comments...</div>';
   const snap=await getDocs(query(collection(db,'articles',articleId,'comments'),orderBy('date','asc')));
   const cs=snap.docs.map(d=>d.data());
-  el.innerHTML=cs.length?cs.map(c=>`<div class="comment"><div class="avatar" style="background:${colorFor(c.name)}">${initials(c.name)}</div><div class="comment-body"><div><span class="c-name">${c.name}</span><span class="c-date">${fmtDate(c.date)}</span></div><p class="c-text">${c.text}</p></div></div>`).join(''):'<p style="color:var(--muted);font-size:14px;margin-bottom:1rem;">No comments yet — be the first!</p>';
+  el.innerHTML=cs.length?cs.map(c=>`<div class="comment"><div class="avatar" style="background:${colorFor(c.name)}">${esc(initials(c.name))}</div><div class="comment-body"><div><span class="c-name">${esc(c.name)}</span><span class="c-date">${fmtDate(c.date)}</span></div><p class="c-text">${esc(c.text)}</p></div></div>`).join(''):'<p style="color:var(--muted);font-size:14px;margin-bottom:1rem;">No comments yet — be the first!</p>';
 }
 window.submitComment=async()=>{
   const name=document.getElementById('c-name').value.trim();
