@@ -136,7 +136,7 @@ aside{position:sticky;top:72px;}
 #article-view{display:none;max-width:700px;margin:2rem auto;padding:0 1.25rem 4rem;}
 .article-tag{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem;}
 .article-tag::before{content:'';display:inline-block;width:20px;height:2px;background:var(--accent);border-radius:2px;}
-#article-view h1{font-family:var(--serif);font-size:2.1rem;font-weight:700;line-height:1.22;margin-bottom:.75rem;}
+#article-view #av-title{font-family:var(--serif);font-size:2.1rem;font-weight:700;line-height:1.22;margin-bottom:.75rem;}
 .article-meta{font-size:13px;color:var(--muted);margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;}
 .share-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--muted);transition:all .2s;margin-left:auto;}
 .share-btn:hover{border-color:var(--accent);color:var(--accent);}
@@ -266,13 +266,13 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
   .post-card-title{font-size:.95rem;}
   .post-card-excerpt{display:none;}
   #article-view{margin:1rem auto;padding:0 1rem 3rem;}
-  #article-view h1{font-size:1.6rem;}
+  #article-view #av-title{font-size:1.6rem;}
   .related-grid{grid-template-columns:1fr 1fr;}
   .form-row{grid-template-columns:1fr;}
   .editor-grid{grid-template-columns:1fr;}
   .ipr{grid-template-columns:60px 1fr 24px;}
   .about-view{padding:0 1rem 3rem;}
-  #about-view h1{font-size:1.6rem;}
+  #about-view .about-title{font-size:1.6rem;}
 }
 @media(max-width:480px){
   .nav-logo{font-size:1.35rem;}
@@ -346,7 +346,7 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
   <button class="back-btn" onclick="showHome()">← Back to Sigazette</button>
   <div class="about-header">
     <div id="about-photo-el"></div>
-    <h1 class="about-title">Siga<span>zette</span></h1>
+    <h2 class="about-title" role="heading" aria-level="1">Siga<span>zette</span></h2>
     <p class="about-subtitle" id="about-subtitle-el"></p>
     <div class="about-socials" id="about-socials-el"></div>
   </div>
@@ -357,7 +357,7 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
 <div id="article-view">
   <button class="back-btn" onclick="showHome()">← Back to Sigazette</button>
   <div class="article-tag" id="av-tag"></div>
-  <h1 id="av-title"></h1>
+  <h2 id="av-title" role="heading" aria-level="1"></h2>
   <div class="article-meta" id="av-meta"></div>
   <img class="article-hero-img" id="av-img" src="" alt="" style="display:none;"/>
   <div class="article-body" id="av-body"></div>
