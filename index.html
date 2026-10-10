@@ -515,6 +515,19 @@ function initials(n){return n.trim().split(' ').map(w=>w[0]||'').join('').toUppe
 function fmtDate(ts){if(!ts)return '';const d=ts.toDate?ts.toDate():new Date(ts);return d.toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});}
 function uid(){return 'p'+Date.now()+Math.random().toString(36).slice(2,5);}
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+/* Images: serve hotlinked photos through Cloudflare's resizer (smaller + modern formats). If that ever fails
+   (not enabled, quota used up, source blocks it) imgFail() quietly falls back to the original URL. */
+const RESIZE_IMAGES=true;
+function rimg(u,w){
+  if(!RESIZE_IMAGES||!u||!/^https:\/\//i.test(u)||u.indexOf('https://www.sigazette.com/')===0)return u;
+  return '/cdn-cgi/image/width='+w+',quality=75,format=auto,fit=cover/'+u;
+}
+const ia=(u,w)=>esc(rimg(u,w));
+window.imgFail=function(el,cls){
+  const o=el.getAttribute('data-orig');
+  if(o&&!el.dataset.tried){el.dataset.tried='1';el.src=o;return;}
+  if(cls)el.className=cls;else el.style.display='none';
+};
 function setCanonical(u){const l=document.querySelector('link[rel="canonical"]');if(l)l.href=u;}
 const modClick=e=>e&&(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button>0);
 window.navTo=(e,where)=>{if(modClick(e))return true;if(e)e.preventDefault();if(where==='about')window.showAbout();else window.showHome();return false;};
@@ -651,7 +664,7 @@ function renderHome(){
   document.getElementById('home-empty').classList.toggle('hidden',articles.length>0);
 }
 function thumbHTML(a){
-  if(a.img)return `<div class="post-thumb"><img src="${a.img}" alt="${esc(a.title)}" loading="lazy" decoding="async" onerror="this.style.display='none'"/></div>`;
+  if(a.img)return `<div class="post-thumb"><img src="${ia(a.img,260)}" data-orig="${esc(a.img)}" width="130" height="92" alt="${esc(a.title)}" loading="lazy" decoding="async" onerror="imgFail(this)"/></div>`;
   return `<div class="post-thumb"><span class="post-thumb-icon">📰</span></div>`;
 }
 function postCardHTML(a){
@@ -673,10 +686,10 @@ function renderFeatured(sorted){
   const el=document.getElementById('featured-section');
   if(!sorted.length){el.innerHTML='';return;}
   const[hero,...rest]=sorted;
-  const imgHTML=hero.img?`<img src="${hero.img}" alt="${esc(hero.title)}" fetchpriority="high" decoding="async" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"/>`:`<span style="font-size:3rem;opacity:.2;">📰</span>`;
+  const imgHTML=hero.img?`<img src="${ia(hero.img,1000)}" data-orig="${esc(hero.img)}" width="640" height="427" alt="${esc(hero.title)}" fetchpriority="high" decoding="async" style="width:100%;height:100%;object-fit:cover;" onerror="imgFail(this)"/>`:`<span style="font-size:3rem;opacity:.2;">📰</span>`;
   const smalls=rest.slice(0,2).map(a=>`
     <div class="feat-small" onclick="showArticle('${a.id}')">
-      ${a.img?`<img class="feat-small-img" src="${a.img}" alt="${esc(a.title)}" loading="lazy" decoding="async" onerror="this.style.display='none'"/>`:`<div class="feat-small-img-placeholder">📰</div>`}
+      ${a.img?`<img class="feat-small-img" src="${ia(a.img,220)}" data-orig="${esc(a.img)}" width="110" height="82" alt="${esc(a.title)}" loading="lazy" decoding="async" onerror="imgFail(this)"/>`:`<div class="feat-small-img-placeholder">📰</div>`}
       <div class="feat-small-body">
         <div class="feat-tag">${a.tag||''}</div>
         <h3><a href="/article/${a.id}" onclick="return navArticle(event,'${a.id}')">${a.title}</a></h3>
@@ -721,14 +734,15 @@ function renderArticle(id){
   document.querySelector('meta[property="og:url"]').content='https://www.sigazette.com/article/'+id;
   document.querySelector('meta[name="twitter:title"]').content=a.title+' — Sigazette';
   document.querySelector('meta[name="twitter:description"]').content=desc;
-  if(a.img){document.querySelector('meta[property="og:image"]').content=a.img;document.querySelector('meta[name="twitter:image"]').content=a.img;}
+  const cardImg=(a.img&&/^https:\/\//.test(a.img))?'https://www.sigazette.com/og/'+a.id+'.jpg':'https://www.sigazette.com/og-image.jpg';
+  document.querySelector('meta[property="og:image"]').content=cardImg;document.querySelector('meta[name="twitter:image"]').content=cardImg;
   const pub=a.date?(a.date.toDate?a.date.toDate():new Date(a.date)).toISOString():'';
   const artUrl='https://www.sigazette.com/article/'+id;
   setCanonical(artUrl);
   const ot=document.querySelector('meta[property="og:type"]');if(ot)ot.content='article';
   let sd=document.getElementById('article-sd');
   if(!sd){sd=document.createElement('script');sd.type='application/ld+json';sd.id='article-sd';document.head.appendChild(sd);}
-  sd.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article","headline":a.title,"description":desc,"author":{"@type":"Person","name":a.author},"publisher":{"@type":"Organization","name":"Sigazette","url":"https://www.sigazette.com"},"url":artUrl,"mainEntityOfPage":{"@type":"WebPage","@id":artUrl},"image":(a.img&&/^https:/.test(a.img))?a.img:"https://www.sigazette.com/og-image.jpg",...(pub?{"datePublished":pub,"dateModified":pub}:{})});
+  sd.textContent=JSON.stringify({"@context":"https://schema.org","@type":"Article","headline":a.title,"description":desc,"author":{"@type":"Person","name":a.author},"publisher":{"@type":"Organization","name":"Sigazette","url":"https://www.sigazette.com"},"url":artUrl,"mainEntityOfPage":{"@type":"WebPage","@id":artUrl},"image":cardImg,...(pub?{"datePublished":pub,"dateModified":pub}:{})});
   document.getElementById('av-tag').textContent=a.tag||'';
   document.getElementById('av-title').textContent=a.title;
   document.getElementById('av-meta').innerHTML=`
@@ -738,7 +752,7 @@ function renderArticle(id){
       ${shareIcon()}Share
     </button>`;
   const imgEl=document.getElementById('av-img');
-  if(a.img){imgEl.src=a.img;imgEl.alt=a.title;imgEl.style.display='block';imgEl.onerror=()=>imgEl.style.display='none';}
+  if(a.img){delete imgEl.dataset.tried;imgEl.setAttribute('data-orig',a.img);imgEl.onerror=()=>imgFail(imgEl);imgEl.src=rimg(a.img,1200);imgEl.alt=a.title;imgEl.style.display='block';}
   else imgEl.style.display='none';
   const paras=a.body.split(/\n\n+/);
   const inlines=a.inlinePhotos||[];
@@ -746,12 +760,12 @@ function renderArticle(id){
   paras.forEach((p,i)=>{
     html+=`<p>${linkify(p.trim())}</p>`;
     inlines.filter(ph=>ph.position===`after-para-${i}`).forEach(ph=>{
-      html+=`<img class="inline-img" src="${ph.img}" alt="${esc(ph.caption||a.title)}" loading="lazy" decoding="async" onerror="this.style.display='none'"/>`;
+      html+=`<img class="inline-img" src="${ia(ph.img,1000)}" data-orig="${esc(ph.img)}" alt="${esc(ph.caption||a.title)}" loading="lazy" decoding="async" onerror="imgFail(this)"/>`;
       if(ph.caption)html+=`<p class="inline-caption">${ph.caption}</p>`;
     });
   });
   inlines.filter(ph=>ph.position==='end').forEach(ph=>{
-    html+=`<img class="inline-img" src="${ph.img}" alt="${esc(ph.caption||a.title)}" loading="lazy" decoding="async" onerror="this.style.display='none'"/>`;
+    html+=`<img class="inline-img" src="${ia(ph.img,1000)}" data-orig="${esc(ph.img)}" alt="${esc(ph.caption||a.title)}" loading="lazy" decoding="async" onerror="imgFail(this)"/>`;
     if(ph.caption)html+=`<p class="inline-caption">${ph.caption}</p>`;
   });
   document.getElementById('av-body').innerHTML=html;
@@ -766,7 +780,7 @@ function renderRelated(currentId,tag){
   if(!related.length){el.innerHTML='';return;}
   el.innerHTML=`<div class="section-label">More from Sigazette</div><div class="related-grid">${related.map(a=>`
     <div class="related-card" onclick="showArticle('${a.id}');window.scrollTo(0,0);">
-      ${a.img?`<img class="related-card-img" src="${a.img}" alt="${esc(a.title)}" loading="lazy" decoding="async" onerror="this.className='related-card-img-placeholder'"/>`:`<div class="related-card-img-placeholder">📰</div>`}
+      ${a.img?`<img class="related-card-img" src="${ia(a.img,400)}" data-orig="${esc(a.img)}" width="200" height="80" alt="${esc(a.title)}" loading="lazy" decoding="async" onerror="imgFail(this,'related-card-img-placeholder')"/>`:`<div class="related-card-img-placeholder">📰</div>`}
       <div class="related-card-body">
         ${a.tag?`<div class="related-card-tag">${a.tag}</div>`:''}
         <div class="related-card-title"><a href="/article/${a.id}" onclick="return navArticle(event,'${a.id}')">${a.title}</a></div>
