@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sigazette — Opinions and Discussions</title>
-<meta name="description" content="Sigazette is an independent Vancouver sports publication: sharp opinion, trade breakdowns and power rankings for fans who want more than headlines."/>
-<meta name="keywords" content="sigazette, sports, NFL, NBA, NHL, MLB, culture, essays, articles, blog, Vancouver"/>
+<title>Sigazette — Independent Sports &amp; Culture Opinion</title>
+<meta name="description" content="Sigazette is an independent publication with sharp opinion on sports and culture, from trade breakdowns and power rankings to essays and takes."/>
+<meta name="keywords" content="sigazette, sports, NFL, NBA, NHL, MLB, culture, essays, articles, blog"/>
 <meta name="author" content="Sigazette"/>
 <link rel="canonical" href="https://www.sigazette.com/"/>
 <meta name="robots" content="index,follow,max-image-preview:large"/>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a3c2e'/%3E%3Ctext x='16' y='24' font-family='Georgia,serif' font-size='22' font-weight='700' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Sigazette"/>
-<meta property="og:title" content="Sigazette — Opinions and Discussions"/>
-<meta property="og:description" content="Sigazette is a Vancouver-based independent sports publication with in-depth analysis, trade breakdowns, and opinion pieces."/>
+<meta property="og:title" content="Sigazette — Independent Sports &amp; Culture Opinion"/>
+<meta property="og:description" content="Sigazette is an independent publication with sharp opinion on sports and culture, from trade breakdowns and power rankings to essays and takes."/>
 <meta property="og:url" content="https://www.sigazette.com/"/>
 <meta property="og:image" content="https://www.sigazette.com/og-image.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:site" content="@theSigazetteMag"/>
-<meta name="twitter:title" content="Sigazette — Opinions and Discussions"/>
-<meta name="twitter:description" content="Sigazette is a Vancouver-based independent sports publication with in-depth analysis, trade breakdowns, and opinion pieces."/>
+<meta name="twitter:title" content="Sigazette — Independent Sports &amp; Culture Opinion"/>
+<meta name="twitter:description" content="Sigazette is an independent publication with sharp opinion on sports and culture, from trade breakdowns and power rankings to essays and takes."/>
 <meta name="twitter:image" content="https://www.sigazette.com/og-image.jpg"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.sigazette.com/#website","name":"Sigazette","alternateName":["The Sigazette"],"url":"https://www.sigazette.com/","description":"Sigazette is a Vancouver-based independent sports publication.","publisher":{"@id":"https://www.sigazette.com/#org"},"inLanguage":"en-CA"},{"@type":"Organization","@id":"https://www.sigazette.com/#org","name":"Sigazette","alternateName":"The Sigazette","url":"https://www.sigazette.com/","logo":{"@type":"ImageObject","url":"https://www.sigazette.com/og-image.jpg"},"sameAs":["https://x.com/theSigazetteMag"]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.sigazette.com/#website","name":"Sigazette","alternateName":["The Sigazette"],"url":"https://www.sigazette.com/","description":"Sigazette is an independent publication covering sports and culture.","publisher":{"@id":"https://www.sigazette.com/#org"},"inLanguage":"en-CA"},{"@type":"Organization","@id":"https://www.sigazette.com/#org","name":"Sigazette","alternateName":"The Sigazette","url":"https://www.sigazette.com/","logo":{"@type":"ImageObject","url":"https://www.sigazette.com/og-image.jpg"},"sameAs":["https://x.com/theSigazetteMag"]}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QRGD2EPR7Y"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QRGD2EPR7Y');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -315,7 +315,7 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
 
 <!-- HOME -->
 <div id="home-view">
-  <h1 class="sr-only">Sigazette — independent sports opinion and analysis from Vancouver</h1>
+  <h1 class="sr-only">Sigazette — independent sports and culture opinion</h1>
   <div class="page">
     <main>
       <div id="featured-section"></div>
@@ -396,7 +396,7 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
     <h3>Edit About Page</h3>
     <div style="margin-bottom:.75rem;">
       <span class="lbl">Tagline / Subtitle</span>
-      <input class="inp-area" type="text" id="about-subtitle" placeholder="e.g. Vancouver-based sports opinions and discussions"/>
+      <input class="inp-area" type="text" id="about-subtitle" placeholder="e.g. Sports and culture opinions and discussions"/>
     </div>
     <div style="margin-bottom:.75rem;">
       <span class="lbl">About Text (press Enter twice for paragraphs)</span>
@@ -514,7 +514,7 @@ function readingTime(body){const words=body.trim().split(/\s+/).length;const min
 /* VIEWS */
 const VIEWS=['home-view','article-view','admin-panel','search-view','about-view'];
 function showOnly(id){VIEWS.forEach(v=>document.getElementById(v).style.display='none');document.getElementById(id).style.display='block';}
-window.showHome=()=>{history.pushState(null,'','https://www.sigazette.com/');showOnly('home-view');currentArticleId=null;document.getElementById('search-input').value='';document.title='Sigazette — Opinions and Discussions';setCanonical('https://www.sigazette.com/');};
+window.showHome=()=>{history.pushState(null,'','https://www.sigazette.com/');showOnly('home-view');currentArticleId=null;document.getElementById('search-input').value='';document.title='Sigazette — Independent Sports & Culture Opinion';setCanonical('https://www.sigazette.com/');};
 window.showAbout=()=>{history.pushState(null,'','https://www.sigazette.com/about');showOnly('about-view');renderAbout();document.title='About — Sigazette';setCanonical('https://www.sigazette.com/about');window.scrollTo(0,0);};
 window.showArticle=(id)=>{currentArticleId=id;history.pushState(null,'','https://www.sigazette.com/article/'+id);showOnly('article-view');renderArticle(id);window.scrollTo(0,0);};
 function showAdmin(){showOnly('admin-panel');renderAdminList();loadAboutIntoEditor();}
