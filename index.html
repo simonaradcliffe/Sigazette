@@ -308,21 +308,6 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
   </div>
 </nav>
 
-<div class="modal-overlay" id="login-modal">
-  <div class="modal">
-    <h2>Admin Login</h2>
-    <label>Email</label>
-    <input class="inp-area" type="email" id="login-email" placeholder="admin@sigazette.com"/>
-    <label>Password</label>
-    <input class="inp-area" type="password" id="login-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"/>
-    <div class="err-msg" id="login-err">Incorrect email or password.</div>
-    <div class="modal-footer">
-      <button class="btn-ghost" onclick="closeLogin()">Cancel</button>
-      <button class="btn-primary" onclick="doLogin()">Sign in</button>
-    </div>
-  </div>
-</div>
-
 <!-- HOME -->
 <div id="home-view">
   <h1 class="sr-only">Sigazette — independent sports and culture opinion</h1>
@@ -394,91 +379,6 @@ footer{background:var(--white);border-top:1px solid var(--border);padding:2rem 1
   <div class="post-list" id="search-results"></div>
 </div>
 
-<!-- ADMIN -->
-<div id="admin-panel">
-  <div class="admin-header">
-    <h2>Admin — Sigazette</h2>
-    <button class="btn-ghost" onclick="logout()">Sign out</button>
-  </div>
-
-  <!-- ABOUT EDITOR -->
-  <div class="admin-section">
-    <h3>Edit About Page</h3>
-    <div style="margin-bottom:.75rem;">
-      <span class="lbl">Tagline / Subtitle</span>
-      <input class="inp-area" type="text" id="about-subtitle" placeholder="e.g. Sports and culture opinions and discussions"/>
-    </div>
-    <div style="margin-bottom:.75rem;">
-      <span class="lbl">About Text (press Enter twice for paragraphs)</span>
-      <textarea class="inp-area" id="about-text" style="height:180px;resize:vertical;" placeholder="Write about Sigazette, what you cover, your mission..."></textarea>
-    </div>
-    <div style="margin-bottom:.75rem;">
-      <span class="lbl">Profile / Logo Photo</span>
-      <div class="img-source-toggle">
-        <button class="toggle-btn active" id="about-tb-upload" onclick="switchAboutImgMode('upload')">Upload</button>
-        <button class="toggle-btn" id="about-tb-url" onclick="switchAboutImgMode('url')">Paste URL</button>
-      </div>
-      <div id="about-img-upload-zone"><input class="inp-area" type="file" id="about-img-file" accept="image/*" onchange="previewAboutImg(this)"/></div>
-      <div id="about-img-url-zone" class="hidden"><input class="inp-area" type="url" id="about-img-url" placeholder="https://..." oninput="previewAboutImgUrl(this.value)"/></div>
-      <img class="about-img-preview" id="about-img-preview" src="" alt=""/>
-    </div>
-    <div style="margin-bottom:.75rem;">
-      <span class="lbl">Social Media Links</span>
-      <div style="display:flex;flex-direction:column;gap:.5rem;">
-        <input class="inp-area" type="url" id="about-twitter" placeholder="Twitter/X URL e.g. https://twitter.com/sigazette"/>
-        <input class="inp-area" type="url" id="about-instagram" placeholder="Instagram URL"/>
-        <input class="inp-area" type="url" id="about-tiktok" placeholder="TikTok URL"/>
-        <input class="inp-area" type="url" id="about-email" placeholder="Email e.g. mailto:hello@sigazette.com"/>
-      </div>
-    </div>
-    <button class="btn-primary" onclick="saveAbout()">Save About Page</button>
-    <div class="err-msg" id="about-err">Please add some text before saving.</div>
-  </div>
-
-  <!-- ARTICLE EDITOR -->
-  <div class="admin-section">
-    <h3 id="editor-heading">New Article</h3>
-    <div class="editor-grid">
-      <div><span class="lbl">Title</span><input class="inp-area" type="text" id="e-title" placeholder="Article headline"/></div>
-      <div><span class="lbl">Author</span><input class="inp-area" type="text" id="e-author" placeholder="e.g. Jane Smith"/></div>
-    </div>
-    <div class="editor-grid">
-      <div><span class="lbl">Topic / Tag</span><input class="inp-area" type="text" id="e-tag" placeholder="e.g. Sports, NFL, NHL"/></div>
-      <div><span class="lbl">Excerpt (optional)</span><input class="inp-area" type="text" id="e-excerpt" placeholder="Short summary for home page"/></div>
-    </div>
-    <div style="margin-bottom:.75rem;">
-      <span class="lbl">Cover Photo</span>
-      <div class="img-source-toggle">
-        <button class="toggle-btn active" id="tb-upload" onclick="switchImgMode('upload')">Upload from device</button>
-        <button class="toggle-btn" id="tb-url" onclick="switchImgMode('url')">Paste URL</button>
-      </div>
-      <div id="img-upload-zone"><input class="inp-area" type="file" id="e-img-file" accept="image/*" onchange="previewCover(this)"/></div>
-      <div id="img-url-zone" class="hidden"><input class="inp-area" type="url" id="e-img-url" placeholder="https://..." oninput="previewCoverUrl(this.value)"/></div>
-      <img class="img-preview-sm" id="img-preview" src="" alt=""/>
-    </div>
-    <div style="margin-bottom:.75rem;">
-      <span class="lbl">Body — press Enter twice for a new paragraph</span>
-      <textarea class="inp-area" id="e-body" style="height:280px;resize:vertical;font-family:var(--tnr);font-size:15px;line-height:1.7;" placeholder="Write your article here..."></textarea>
-    </div>
-    <div class="inline-photos-section">
-      <h4>Inline Photos</h4>
-      <p>Insert photos after any paragraph or at the end of the article.</p>
-      <div class="inline-photo-list" id="inline-photo-list"></div>
-      <button class="add-inline-btn" onclick="addInlinePhoto()">+ Add inline photo</button>
-    </div>
-    <div class="editor-actions">
-      <button class="btn-primary" onclick="saveArticle()">Publish article</button>
-      <button class="btn-ghost" id="cancel-edit-btn" onclick="cancelEdit()" style="display:none;">Cancel edit</button>
-    </div>
-    <div class="err-msg" id="editor-err">Please fill in the title, author, and body.</div>
-  </div>
-
-  <div class="admin-articles">
-    <h3>Published Articles</h3>
-    <div id="admin-article-list"></div>
-  </div>
-</div>
-
 <footer>
   <div class="footer-logo">Siga<span>zette</span></div>
   <ul class="footer-links">
@@ -536,7 +436,7 @@ function readingTime(body){const words=body.trim().split(/\s+/).length;const min
 
 /* VIEWS */
 const VIEWS=['home-view','article-view','admin-panel','search-view','about-view'];
-function showOnly(id){VIEWS.forEach(v=>document.getElementById(v).style.display='none');document.getElementById(id).style.display='block';}
+function showOnly(id){VIEWS.forEach(v=>{const e=document.getElementById(v);if(e)e.style.display='none';});document.getElementById(id).style.display='block';}
 window.showHome=()=>{history.pushState(null,'','https://www.sigazette.com/');showOnly('home-view');currentArticleId=null;document.getElementById('search-input').value='';document.title='Sigazette — Independent Sports & Culture Opinion';setCanonical('https://www.sigazette.com/');};
 window.showAbout=()=>{history.pushState(null,'','https://www.sigazette.com/about');showOnly('about-view');renderAbout();document.title='About — Sigazette';setCanonical('https://www.sigazette.com/about');window.scrollTo(0,0);};
 window.showArticle=(id)=>{currentArticleId=id;history.pushState(null,'','https://www.sigazette.com/article/'+id);showOnly('article-view');renderArticle(id);window.scrollTo(0,0);};
@@ -594,6 +494,8 @@ loadArticles();
 /* FIRESTORE — about */
 async function loadAboutData(){
   try{const snap=await getDoc(doc(db,'settings','about'));if(snap.exists())aboutData=snap.data();}catch(e){}
+  const av=document.getElementById('about-view');
+  if(av&&av.style.display==='block')renderAbout();
 }
 
 /* ABOUT PAGE */
@@ -805,7 +707,22 @@ window.submitComment=async()=>{
 };
 
 /* ADMIN */
-window.handleAdminBtn=()=>{if(isAdmin)showAdmin();else document.getElementById('login-modal').classList.add('open');};
+/* The admin forms are NOT part of the page HTML: they're fetched from /admin-ui.html the first time Admin is clicked. */
+let adminUiPromise=null;
+function ensureAdminUI(){
+  if(document.getElementById('admin-panel'))return Promise.resolve(true);
+  if(!adminUiPromise){
+    adminUiPromise=fetch('/admin-ui.html',{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error('admin ui '+r.status);return r.text();}).then(h=>{
+      if(!document.getElementById('admin-panel'))document.querySelector('footer').insertAdjacentHTML('beforebegin',h);
+      return true;
+    }).catch(()=>{adminUiPromise=null;return false;});
+  }
+  return adminUiPromise;
+}
+window.handleAdminBtn=async()=>{
+  if(!(await ensureAdminUI())){alert('Could not load the admin tools. Check your connection and try again.');return;}
+  if(isAdmin)showAdmin();else document.getElementById('login-modal').classList.add('open');
+};
 window.closeLogin=()=>{document.getElementById('login-modal').classList.remove('open');document.getElementById('login-err').style.display='none';};
 window.doLogin=async()=>{
   const em=document.getElementById('login-email').value.trim();
@@ -887,8 +804,9 @@ function renderAdminList(){
 }
 
 /* INIT */
-loadAboutData();
-showOnly('home-view');
+const aboutReady=loadAboutData();
+// Article and About pages arrive with their text already in the HTML (from the Worker); leave that showing instead of flashing the homepage.
+if(!window.__ARTICLE_ID__&&window.location.pathname!=='/about')showOnly('home-view');
 // Check for article ID injected by Cloudflare Worker
 if(window.__ARTICLE_ID__){
   const waitForArticles=setInterval(()=>{
@@ -896,6 +814,8 @@ if(window.__ARTICLE_ID__){
     if(a){clearInterval(waitForArticles);currentArticleId=a.id;showOnly('article-view');renderArticle(a.id);window.scrollTo(0,0);}
   },100);
   setTimeout(()=>clearInterval(waitForArticles),5000);
+} else if(window.location.pathname==='/about'){
+  aboutReady.then(()=>checkUrl());
 } else {
   checkUrl();
 }
