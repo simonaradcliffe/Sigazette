@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin-ui.html
+Disallow: /admin-ui
 Sitemap: https://www.sigazette.com/sitemap.xml
