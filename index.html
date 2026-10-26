@@ -678,7 +678,7 @@ function renderRelated(currentId,tag){
   let related=articles.filter(a=>a.id!==currentId&&a.tag===tag).slice(0,3);
   if(related.length<3){const others=articles.filter(a=>a.id!==currentId&&a.tag!==tag).slice(0,3-related.length);related=[...related,...others];}
   if(!related.length){el.innerHTML='';return;}
-  el.innerHTML=`<h2 class="section-label">More from Sigazette</h2><div class="related-grid">${related.map(a=>`
+  el.innerHTML=`<h2 class="section-label">Read next</h2><div class="related-grid">${related.map(a=>`
     <article class="related-card">
       ${a.img?`<img class="related-card-img" src="${ia(a.img,400)}" data-orig="${esc(a.img)}" width="400" height="267" alt="${esc(a.title)}" loading="lazy" decoding="async" onerror="imgFail(this,'related-card-img-placeholder')"/>`:`<div class="related-card-img-placeholder">S</div>`}
       ${a.tag?`<div class="related-card-tag">${a.tag}</div>`:''}
